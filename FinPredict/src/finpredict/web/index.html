@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinPredict · 实时金融趋势预判</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/echarts.min.js" defer></script>
+</head>
+<body>
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">FP</div>
+      <div class="brand-text"><b>FinPredict</b><span>实时趋势预判</span></div>
+    </div>
+    <nav class="nav">
+      <button class="nav-item active" data-page="quote">实时行情</button>
+      <button class="nav-item" data-page="forecast">趋势预判</button>
+      <button class="nav-item" data-page="backtest">回测检验</button>
+      <button class="nav-item" data-page="ai">AI 助手</button>
+    </nav>
+    <div class="side-foot">
+      <div class="dot ok" id="statusDot"></div>
+      <span id="sideStatus">就绪</span>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div><h1 id="pageTitle">实时行情</h1><p id="pageSub">多周期 K 线 · 实时联网</p></div>
+      <div class="top-actions">
+        <input id="symbolInput" class="input" placeholder="输入标的（如 000001.SS / 0700.HK / AAPL）" value="000001.SS" list="symList">
+        <datalist id="symList"></datalist>
+        <select id="intervalSelect" class="select">
+          <option value="1h">1 小时</option>
+          <option value="3h">3 小时</option>
+          <option value="1d" selected>1 天</option>
+          <option value="1mo">1 个月</option>
+        </select>
+        <button id="refreshBtn" class="btn primary">刷新</button>
+      </div>
+    </header>
+
+    <!-- 实时行情 -->
+    <section class="page active" id="page-quote">
+      <div class="kpi-row" id="quoteKpis"></div>
+      <div class="card"><div class="card-head"><span>价格走势</span><em id="quoteRange"></em></div>
+        <div id="klineChart" class="chart-lg"></div>
+      </div>
+      <div class="grid-2">
+        <div class="card"><div class="card-head"><span>RSI / MACD</span></div><div id="rsiChart" class="chart-md"></div></div>
+        <div class="card"><div class="card-head"><span>成交量</span></div><div id="volChart" class="chart-md"></div></div>
+      </div>
+    </section>
+
+    <!-- 趋势预判 -->
+    <section class="page" id="page-forecast">
+      <div class="kpi-row" id="forecastKpis"></div>
+      <div class="card"><div class="card-head"><span>预判曲线与置信区间</span><em id="fcHorizon"></em></div>
+        <div id="forecastChart" class="chart-lg"></div>
+      </div>
+      <div class="card"><div class="card-head"><span>模型说明</span></div><div id="fcNotes" class="notes"></div></div>
+    </section>
+
+    <!-- 回测检验 -->
+    <section class="page" id="page-backtest">
+      <div class="kpi-row" id="btKpis"></div>
+      <div class="card"><div class="card-head"><span>预测 vs 实际（对数收益）</span></div>
+        <div id="btPredChart" class="chart-md"></div>
+      </div>
+      <div class="grid-2">
+        <div class="card"><div class="card-head"><span>累计净值（策略 vs 买入持有）</span></div><div id="btEquityChart" class="chart-md"></div></div>
+        <div class="card"><div class="card-head"><span>残差分布</span></div><div id="btResidChart" class="chart-md"></div></div>
+      </div>
+    </section>
+
+    <!-- AI 助手 -->
+    <section class="page" id="page-ai">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span>AI 配置</span><em id="aiStatus"></em></div>
+          <div class="form-grid">
+            <label>Base URL<input id="aiBase" class="input" placeholder="http://127.0.0.1:11434/v1"></label>
+            <label>Model<input id="aiModel" class="input" placeholder="qwen2.5:7b"></label>
+            <label>API Key（可选）<input id="aiKey" class="input" type="password" placeholder="无 Key 留空"></label>
+            <label>Temperature<input id="aiTemp" class="input" type="number" step="0.1" value="0.3"></label>
+          </div>
+          <div class="btn-row">
+            <button id="aiSave" class="btn">保存配置</button>
+            <button id="aiTest" class="btn">测试连接</button>
+          </div>
+          <div class="hint" id="aiHint">支持 Ollama / LM Studio / vLLM / DeepSeek / OpenAI / 通义千问等任意 OpenAI 兼容端点。密钥仅存本地 config。</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span>提示词模板（免手写）</span></div>
+          <div id="aiTemplates" class="tpl-list"></div>
+          <div class="hint">选择模板后，系统自动用当前行情/预判数据填充，一键调用 AI。</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>AI 分析结果</span><em id="aiLatency"></em></div>
+        <div class="btn-row" style="margin-bottom:8px">
+          <button id="aiRun" class="btn primary">运行 AI 分析</button>
+          <button id="aiCommittee" class="btn">委员会多智能体分析</button>
+          <span class="hint" id="aiTplHint"></span>
+        </div>
+        <div id="aiOutput" class="ai-output">配置 AI 后，选择模板并点击「运行 AI 分析」，或点击「委员会多智能体分析」（5 角色分工 + 综合决策，借鉴 TradingAgents/ai-hedge-fund），结果将显示在此处。</div>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
