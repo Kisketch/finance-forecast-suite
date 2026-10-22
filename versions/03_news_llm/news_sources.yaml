@@ -1,0 +1,167 @@
+# 官方新闻源配置
+# tier: official（政府/央行/监管/交易所）/ multilateral（多边机构）/ company（公司新闻室）
+# 不使用社交媒体、论坛、聚合站；RSS 失败时在“模型接入”页显示源健康。
+settings:
+  user_agent: "FinTerminal/1.0 (local research; official-feed reader)"
+  timeout_seconds: 20
+  max_age_days: 45
+  max_workers: 6
+  # 同步时最多抓取每条源的文章数；HTML 源会额外抓正文摘要
+  default_max_items: 20
+
+sources:
+  - id: fed
+    name: Federal Reserve
+    type: rss
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    tier: official
+    region: US
+    category: monetary
+    language: en
+    max_items: 25
+
+  - id: ecb
+    name: European Central Bank
+    type: rss
+    url: https://www.ecb.europa.eu/rss/press.html
+    tier: official
+    region: EU
+    category: monetary
+    language: en
+    max_items: 20
+
+  - id: boe
+    name: Bank of England
+    type: rss
+    url: https://www.bankofengland.co.uk/rss/news
+    tier: official
+    region: UK
+    category: monetary
+    language: en
+    max_items: 20
+
+  - id: ustr
+    name: U.S. Trade Representative
+    type: rss
+    url: https://ustr.gov/rss.xml
+    tier: official
+    region: US
+    category: trade
+    language: en
+    max_items: 15
+
+  - id: hkgov
+    name: HKSAR Government
+    type: rss
+    url: https://www.info.gov.hk/gia/rss/general_en.xml
+    tier: official
+    region: HK
+    category: policy
+    language: en
+    max_items: 25
+
+  - id: eia
+    name: U.S. Energy Information Administration
+    type: rss
+    url: https://www.eia.gov/rss/todayinenergy.xml
+    tier: official
+    region: US
+    category: energy
+    language: en
+    max_items: 20
+
+  - id: iea
+    name: International Energy Agency
+    type: html
+    url: https://www.iea.org/news
+    base_url: https://www.iea.org
+    link_regex: "/news/.+"
+    tier: multilateral
+    region: GLOBAL
+    category: energy
+    language: en
+    article_fetch: true
+    max_items: 12
+
+  - id: apple
+    name: Apple Newsroom
+    type: rss
+    url: https://www.apple.com/newsroom/rss-feed.rss
+    tier: company
+    region: US
+    category: tech
+    language: en
+    max_items: 15
+
+  - id: openai
+    name: OpenAI News
+    type: rss
+    url: https://openai.com/news/rss.xml
+    tier: company
+    region: US
+    category: tech
+    language: en
+    max_items: 15
+
+  - id: google
+    name: Google Blog
+    type: rss
+    url: https://blog.google/rss/
+    tier: company
+    region: US
+    category: tech
+    language: en
+    max_items: 15
+
+  - id: meta
+    name: Meta Newsroom
+    type: rss
+    url: https://about.fb.com/feed/
+    tier: company
+    region: US
+    category: tech
+    language: en
+    max_items: 15
+
+  # 中国内地官方源：无稳定 RSS，用官方新闻列表页（HTML）适配器。
+  - id: gov_cn
+    name: 中国政府网（英文）
+    type: html
+    url: https://english.www.gov.cn/news/
+    base_url: https://english.www.gov.cn
+    link_regex: "/news/\\d{6}/\\d{2}/content_"
+    tier: official
+    region: CN
+    category: policy
+    language: en
+    article_fetch: true
+    max_items: 15
+
+  - id: hkma
+    name: Hong Kong Monetary Authority
+    type: html
+    url: https://www.hkma.gov.hk/eng/news-and-media/press-releases/
+    base_url: https://www.hkma.gov.hk
+    link_regex: "/eng/news-and-media/press-releases/\\d{4}/\\d{2}/\\d+"
+    tier: official
+    region: HK
+    category: monetary
+    language: en
+    article_fetch: true
+    max_items: 15
+
+  - id: sse
+    name: 上海证券交易所
+    type: html
+    url: https://www.sse.com.cn/aboutus/mediacenter/hotandd/
+    base_url: https://www.sse.com.cn
+    link_regex: "/aboutus/mediacenter/hotandd/c/c_\\d+"
+    tier: official
+    region: CN
+    category: regulation
+    language: zh
+    article_fetch: true
+    max_items: 12
+
+  # 说明：SEC/BLS/IMF/BIS/OPEC/SFC 等官方源在当前网络下返回 403/404/连接拒绝，
+  # 不加入默认启用列表；如你的网络可访问，可自行添加并测试。

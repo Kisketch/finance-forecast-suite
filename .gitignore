@@ -30,4 +30,7 @@ Thumbs.db
 *.log
 temp/
 .wind-alice/
+
+# ===== 快照归档包（体积大，作为 GitHub Release 资产发布）=====
+snapshots/*.zip
 releases/

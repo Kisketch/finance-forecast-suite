@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "as_of": "2026-10-21",
+    "note": "Star 数为公开快照约数，会随时间变动；许可证以 repo 根目录 LICENSE 为准。本表用于选型与合规审查，不代表预测能力。",
+    "verified_by": "公开 GitHub 页面/许可证文件/检索快照；未逐个 clone 复核。"
+  },
+  "projects": [
+    {
+      "name": "TradingAgents",
+      "repo": "TauricResearch/TradingAgents",
+      "category": "LLM 多智能体交易",
+      "stars": "约 111.8K",
+      "license": "Apache-2.0",
+      "maintenance": "活跃（2026 年持续发布）",
+      "reliability": "工程/社区活跃；预测准确率无保证",
+      "adopted": "借鉴“多角色辩论” → 我们实现多模型委员会（趋势/均值回归/波动/宏观），不使用 LLM 生成交易决策",
+      "risk": "LLM 幻觉、API 成本、不可复现",
+      "source": "https://github.com/TauricResearch/TradingAgents"
+    },
+    {
+      "name": "OpenBB Platform",
+      "repo": "OpenBB-finance/OpenBB",
+      "category": "终端级数据平台",
+      "stars": "约 74.5K",
+      "license": "AGPL-3.0（闭源 SaaS 需商业授权）",
+      "maintenance": "活跃",
+      "reliability": "工程成熟；协议有传染性",
+      "adopted": "借鉴“一次接入、多端复用” → 我们的 DataStore 统一长表 + 本地 API",
+      "risk": "AGPL 商用限制；数据源仍需各自授权",
+      "source": "https://github.com/OpenBB-finance/OpenBB"
+    },
+    {
+      "name": "daily_stock_analysis",
+      "repo": "ZhuLinsen/daily_stock_analysis",
+      "category": "A 股/港股/美股 LLM 日报",
+      "stars": "约 32K–67K（快照差异大；表中 58.4K 无法复现）",
+      "license": "详见 repo（未在表中确认）",
+      "maintenance": "活跃",
+      "reliability": "功能稳定；依赖第三方 LLM 配额",
+      "adopted": "借鉴“每日看板 + 买卖点 + 推送” → 我们做本地看板与信号，不做自动推送",
+      "risk": "LLM 输出不构成投资建议；配额/成本",
+      "source": "https://github.com/ZhuLinsen/daily_stock_analysis"
+    },
+    {
+      "name": "ai-hedge-fund",
+      "repo": "virattt/ai-hedge-fund",
+      "category": "多智能体对冲基金 POC",
+      "stars": "约 50K+",
+      "license": "MIT",
+      "maintenance": "活跃",
+      "reliability": "教育用途；README 明确不实盘",
+      "adopted": "借鉴“多风格投资者 Agent” → 我们做多区域/多周期专家模型，不模拟名人风格",
+      "risk": "仅教育；不承诺收益",
+      "source": "https://github.com/virattt/ai-hedge-fund"
+    },
+    {
+      "name": "Qlib",
+      "repo": "microsoft/qlib",
+      "category": "AI 量化研究平台",
+      "stars": "约 37K–49K",
+      "license": "MIT",
+      "maintenance": "活跃（微软维护）",
+      "reliability": "工业级；上手陡峭",
+      "adopted": "借鉴 Alpha158 因子工程 → 扩展动量/波动/量价/形态特征；未直接使用其数据接口",
+      "risk": "主要面向 A 股数据生态；回测配置复杂",
+      "source": "https://github.com/microsoft/qlib"
+    },
+    {
+      "name": "vnpy / VeighNa",
+      "repo": "vnpy/vnpy",
+      "category": "国内量化交易框架",
+      "stars": "约 45K+",
+      "license": "MIT",
+      "maintenance": "活跃（4.x）",
+      "reliability": "私募/证券/期货实际使用",
+      "adopted": "借鉴多资产/网关分层 → 我们保留多市场数据层，不做实盘网关",
+      "risk": "实盘需券商权限；本项目不接交易",
+      "source": "https://github.com/vnpy/vnpy"
+    },
+    {
+      "name": "freqtrade",
+      "repo": "freqtrade/freqtrade",
+      "category": "加密货币交易机器人",
+      "stars": "约 46K+",
+      "license": "GPL-3.0（表中 ISC 为错误）",
+      "maintenance": "活跃",
+      "reliability": "社区极活跃；加密波动大",
+      "adopted": "借鉴回测 + 手续费/滑点 + 超参优化 → 我们在审计中加入交易成本与换手",
+      "risk": "GPL 传染性；实盘风险自担",
+      "source": "https://github.com/freqtrade/freqtrade/blob/develop/LICENSE"
+    },
+    {
+      "name": "Kronos",
+      "repo": "shiyu-coder/Kronos",
+      "category": "K 线基础模型",
+      "stars": "约 36K–41K（表中 23.3K 偏旧）",
+      "license": "开源，但商用需单独确认（repo 有 licensing inquiry）",
+      "maintenance": "活跃（AAAI 2026）",
+      "reliability": "学术支撑强；实盘证据待验证",
+      "adopted": "借鉴“K 线离散化/多尺度”思路；未直接加载 4.1M–499.2M 权重（算力/数据不足）",
+      "risk": "论文 RankIC ≠ 实盘收益；许可不清晰",
+      "source": "https://github.com/shiyu-coder/Kronos"
+    },
+    {
+      "name": "backtrader",
+      "repo": "mementum/backtrader",
+      "category": "回测框架",
+      "stars": "约 16K+",
+      "license": "GPL-3.0（表中 MIT 为错误）",
+      "maintenance": "停更（2023-04 后无 release）",
+      "reliability": "文档/教程丰富；主仓库停更",
+      "adopted": "借鉴事件驱动回测思想 → 我们用向量化回测 + 成本，未复制代码",
+      "risk": "GPL；不再维护；建议 fork/替代",
+      "source": "https://github.com/mementum/backtrader"
+    },
+    {
+      "name": "FinBERT",
+      "repo": "ProsusAI/finBERT",
+      "category": "金融情绪分析",
+      "stars": "高活跃（无单一星数口径）",
+      "license": "Apache-2.0（代码）；模型权重许可需单独查看",
+      "maintenance": "活跃（2026-10 仍有提交）",
+      "reliability": "情绪因子成熟；中文支持有限",
+      "adopted": "预留新闻情绪接口；因缺少授权新闻源，本期不接入",
+      "risk": "三分类粒度粗；中文金融语料需再训练",
+      "source": "https://github.com/ProsusAI/finBERT"
+    },
+    {
+      "name": "AKShare",
+      "repo": "akfamily/akshare",
+      "category": "国内数据源",
+      "stars": "约 22.8K",
+      "license": "MIT",
+      "maintenance": "活跃",
+      "reliability": "接口多且免费；依赖上游网站结构",
+      "adopted": "作为备选数据源；本期主源 Yahoo + 腾讯/新浪补点",
+      "risk": "非官方数据；关键决策需交叉验证",
+      "source": "https://github.com/akfamily/akshare"
+    },
+    {
+      "name": "TA-Lib",
+      "repo": "ta-lib/ta-lib-python",
+      "category": "技术指标库",
+      "stars": "业界事实标准",
+      "license": "BSD",
+      "maintenance": "活跃",
+      "reliability": "成熟；Windows C 依赖偶有编译问题",
+      "adopted": "借鉴指标定义；我们用 pandas 原生实现，避免 C 依赖",
+      "risk": "安装门槛；指标参数需统一",
+      "source": "https://github.com/ta-lib/ta-lib-python"
+    }
+  ],
+  "compliance": [
+    "GPL-3.0（freqtrade、backtrader）与 AGPL-3.0（OpenBB）是 copyleft：修改后对外分发/提供网络服务通常需要开源或商业授权。",
+    "MIT/Apache-2.0/BSD 为宽松协议，但仍需保留版权与许可声明。",
+    "本项目未复制上述项目的源代码；仅借鉴公开的架构/指标/回测思想，并用 pandas/scikit-learn 重新实现。",
+    "Kronos、FinBERT 的模型权重许可与代码许可可能不同，商用前需单独核对。"
+  ]
+}

@@ -17,6 +17,16 @@
 
 → 完整证据、界面实图与复现方法：**[AUDIT.md](AUDIT.md)**
 
+## 📦 快照与归档
+
+| 归档 | 内容 | 获取 |
+|------|------|------|
+| **v1.3 完整快照包** | 源码 + 全部文档 + 五语 README + 图标 + 两个最终 exe（215 文件 / 58.8 MB） | [下载 finance-forecast-suite_v1.3.zip](https://github.com/Kisketch/finance-forecast-suite/releases/download/v1.3/finance-forecast-suite_v1.3.zip) |
+| **阶段快照** | `versions/01_core_terminal` → `04_merged_suite`（策展式功能阶段快照，含 SNAPSHOT.md） | 仓库 `versions/` 目录 |
+| **变更日志** | v0.1 → v1.3 逐版明细（新增/变更/修复/验证） | [CHANGELOG.md](CHANGELOG.md) |
+| **版本记录** | FIN_Terminal v0.1-v0.4 + FinPredict v1.0-v1.3 | [VERSIONS.md](VERSIONS.md) |
+| **研发流程** | 分支策略 / 提交规范 / 质量门 / 阶段时间线 | [DEVELOPMENT.md](DEVELOPMENT.md) |
+
 ## 目录结构
 
 ```

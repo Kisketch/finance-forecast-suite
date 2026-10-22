@@ -1,0 +1,1740 @@
+{
+  "file_size_mb": 419.1,
+  "kinds_top": [
+    [
+      "source-range",
+      48622
+    ],
+    [
+      "expression",
+      28868
+    ],
+    [
+      "artifact-path",
+      10392
+    ],
+    [
+      "require",
+      6031
+    ],
+    [
+      "call-site",
+      4576
+    ],
+    [
+      "source-module",
+      3323
+    ],
+    [
+      "property-slot",
+      2945
+    ],
+    [
+      "binding",
+      2861
+    ],
+    [
+      "javascript-module",
+      2412
+    ],
+    [
+      "suffix",
+      1952
+    ],
+    [
+      "parameter",
+      1927
+    ],
+    [
+      "function",
+      1706
+    ],
+    [
+      "unresolved",
+      1371
+    ],
+    [
+      "return-site",
+      1191
+    ],
+    [
+      "asar-entry",
+      166
+    ],
+    [
+      "literal",
+      100
+    ],
+    [
+      "network",
+      68
+    ],
+    [
+      "javascript-chunk",
+      63
+    ],
+    [
+      "javascript-asset",
+      63
+    ],
+    [
+      "source-map",
+      63
+    ],
+    [
+      "promise",
+      55
+    ],
+    [
+      "terminal",
+      47
+    ],
+    [
+      "boundary",
+      40
+    ],
+    [
+      "artifact",
+      38
+    ],
+    [
+      "unknown",
+      32
+    ],
+    [
+      "exposure",
+      31
+    ],
+    [
+      "storage",
+      20
+    ],
+    [
+      "dynamic-import",
+      20
+    ],
+    [
+      "call",
+      19
+    ],
+    [
+      "event",
+      19
+    ]
+  ],
+  "statistics": {
+    "relevant_files": 166,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 24078155,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 62,
+    "skipped_javascript_files": 1,
+    "visited_ast_nodes": 888069,
+    "findings": 6621,
+    "modules": 1896,
+    "parse_failures": 0
+  },
+  "limitations": [
+    "JavaScript syntax was parsed as data and was never evaluated."
+  ],
+  "electron": {
+    "browser_windows": [],
+    "context_bridge_apis": [],
+    "ipc": [
+      {
+        "module_key": "91348",
+        "location": {
+          "start": {
+            "line": 2,
+            "column": 18888
+          },
+          "end": {
+            "line": 2,
+            "column": 19123
+          }
+        },
+        "side": "renderer",
+        "operation": "on",
+        "mode": "listen",
+        "handler_kind": "inline-function",
+        "handler_location": {
+          "start": {
+            "line": 2,
+            "column": 18908
+          },
+          "end": {
+            "line": 2,
+            "column": 19121
+          }
+        },
+        "channel": "REMOTE_RENDERER_CALLBACK",
+        "channel_expression": null,
+        "module_runtime": "webpack-bootstrap@63",
+        "resolution_basis": "wrapper-substitution",
+        "invocation_location": {
+          "start": {
+            "line": 2,
+            "column": 19710
+          },
+          "end": {
+            "line": 2,
+            "column": 19766
+          }
+        }
+      },
+      {
+        "module_key": "91348",
+        "location": {
+          "start": {
+            "line": 2,
+            "column": 18888
+          },
+          "end": {
+            "line": 2,
+            "column": 19123
+          }
+        },
+        "side": "renderer",
+        "operation": "on",
+        "mode": "listen",
+        "handler_kind": "inline-function",
+        "handler_location": {
+          "start": {
+            "line": 2,
+            "column": 18908
+          },
+          "end": {
+            "line": 2,
+            "column": 19121
+          }
+        },
+        "channel": "REMOTE_RENDERER_RELEASE_CALLBACK",
+        "channel_expression": null,
+        "module_runtime": "webpack-bootstrap@63",
+        "resolution_basis": "wrapper-substitution",
+        "invocation_location": {
+          "start": {
+            "line": 2,
+            "column": 19767
+          },
+          "end": {
+            "line": 2,
+            "column": 19823
+          }
+        }
+      }
+    ],
+    "sender_validations": [
+      {
+        "module_key": "93906",
+        "location": {
+          "start": {
+            "line": 2,
+            "column": 1439841
+          },
+          "end": {
+            "line": 2,
+            "column": 1439872
+          }
+        },
+        "subject": "sender-id",
+        "mechanism": "comparison:===",
+        "expected": {
+          "status": "dynamic",
+          "value": null,
+          "expression": "t.webContentsId()"
+        },
+        "enforcement": "unknown",
+        "module_runtime": "webpack-bootstrap@63"
+      },
+      {
+        "module_key": "93906",
+        "location": {
+          "start": {
+            "line": 2,
+            "column": 1440299
+          },
+          "end": {
+            "line": 2,
+            "column": 1440330
+          }
+        },
+        "subject": "sender-id",
+        "mechanism": "comparison:===",
+        "expected": {
+          "status": "dynamic",
+          "value": null,
+          "expression": "t.webContentsId()"
+        },
+        "enforcement": "unknown",
+        "module_runtime": "webpack-bootstrap@63"
+      },
+      {
+        "module_key": "94001",
+        "location": {
+          "start": {
+            "line": 2,
+            "column": 1460420
+          },
+          "end": {
+            "line": 2,
+            "column": 1460440
+          }
+        },
+        "subject": "sender-id",
+        "mechanism": "comparison:!==",
+        "expected": {
+          "status": "dynamic",
+          "value": null,
+          "expression": "void 0"
+        },
+        "enforcement": "unknown",
+        "module_runtime": "webpack-bootstrap@63"
+      }
+    ],
+    "utility_processes": [],
+    "native_addon_bindings": [],
+    "call_paths": [
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_WRONG_CONTEXT_ERROR",
+        "channel": "REMOTE_BROWSER_WRONG_CONTEXT_ERROR",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9364
+              },
+              "end": {
+                "line": 2,
+                "column": 9467
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_WRONG_CONTEXT_ERROR",
+        "channel": "REMOTE_BROWSER_WRONG_CONTEXT_ERROR",
+        "terminal": "ipc-event.sender.eventNames",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9364
+              },
+              "end": {
+                "line": 2,
+                "column": 9467
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "ipc",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8693
+              },
+              "end": {
+                "line": 2,
+                "column": 9044
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "call",
+            "label": "n",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8756
+              },
+              "end": {
+                "line": 2,
+                "column": 8767
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9404
+              },
+              "end": {
+                "line": 2,
+                "column": 9465
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "call",
+            "label": "x",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9451
+              },
+              "end": {
+                "line": 2,
+                "column": 9464
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 6995
+              },
+              "end": {
+                "line": 2,
+                "column": 7341
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "ipc-event.sender.eventNames",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 7173
+              },
+              "end": {
+                "line": 2,
+                "column": 7187
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          },
+          {
+            "expression": "t.isRemoteModuleEnabled(e.sender)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8715
+              },
+              "end": {
+                "line": 2,
+                "column": 8748
+              }
+            }
+          },
+          {
+            "expression": "void 0!==i",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9439
+              },
+              "end": {
+                "line": 2,
+                "column": 9449
+              }
+            }
+          },
+          {
+            "expression": "e instanceof i.EventEmitter",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 7136
+              },
+              "end": {
+                "line": 2,
+                "column": 7163
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_REQUIRE",
+        "channel": "REMOTE_BROWSER_REQUIRE",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9468
+              },
+              "end": {
+                "line": 2,
+                "column": 9861
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_GET_BUILTIN",
+        "channel": "REMOTE_BROWSER_GET_BUILTIN",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9862
+              },
+              "end": {
+                "line": 2,
+                "column": 10162
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_GET_GLOBAL",
+        "channel": "REMOTE_BROWSER_GET_GLOBAL",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10163
+              },
+              "end": {
+                "line": 2,
+                "column": 10457
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_GET_CURRENT_WINDOW",
+        "channel": "REMOTE_BROWSER_GET_CURRENT_WINDOW",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10458
+              },
+              "end": {
+                "line": 2,
+                "column": 10789
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_GET_CURRENT_WINDOW",
+        "channel": "REMOTE_BROWSER_GET_CURRENT_WINDOW",
+        "terminal": "ipc-event.sender.getOwnerBrowserWindow",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10458
+              },
+              "end": {
+                "line": 2,
+                "column": 10789
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "ipc",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8693
+              },
+              "end": {
+                "line": 2,
+                "column": 9044
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "call",
+            "label": "n",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8756
+              },
+              "end": {
+                "line": 2,
+                "column": 8767
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10497
+              },
+              "end": {
+                "line": 2,
+                "column": 10787
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "ipc-event.sender.getOwnerBrowserWindow",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10719
+              },
+              "end": {
+                "line": 2,
+                "column": 10751
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          },
+          {
+            "expression": "t.isRemoteModuleEnabled(e.sender)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8715
+              },
+              "end": {
+                "line": 2,
+                "column": 8748
+              }
+            }
+          },
+          {
+            "expression": "void 0===r.returnValue",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10606
+              },
+              "end": {
+                "line": 2,
+                "column": 10628
+              }
+            }
+          },
+          {
+            "expression": "!(r.defaultPrevented)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10633
+              },
+              "end": {
+                "line": 2,
+                "column": 10651
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_GET_CURRENT_WEB_CONTENTS",
+        "channel": "REMOTE_BROWSER_GET_CURRENT_WEB_CONTENTS",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 10790
+              },
+              "end": {
+                "line": 2,
+                "column": 11119
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_CONSTRUCTOR",
+        "channel": "REMOTE_BROWSER_CONSTRUCTOR",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 11120
+              },
+              "end": {
+                "line": 2,
+                "column": 11326
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_FUNCTION_CALL",
+        "channel": "REMOTE_BROWSER_FUNCTION_CALL",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 11327
+              },
+              "end": {
+                "line": 2,
+                "column": 11769
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_MEMBER_CONSTRUCTOR",
+        "channel": "REMOTE_BROWSER_MEMBER_CONSTRUCTOR",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 11770
+              },
+              "end": {
+                "line": 2,
+                "column": 11995
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_MEMBER_CALL",
+        "channel": "REMOTE_BROWSER_MEMBER_CALL",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 11996
+              },
+              "end": {
+                "line": 2,
+                "column": 12422
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_MEMBER_SET",
+        "channel": "REMOTE_BROWSER_MEMBER_SET",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 12423
+              },
+              "end": {
+                "line": 2,
+                "column": 12622
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_MEMBER_GET",
+        "channel": "REMOTE_BROWSER_MEMBER_GET",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 12623
+              },
+              "end": {
+                "line": 2,
+                "column": 12796
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_DEREFERENCE",
+        "channel": "REMOTE_BROWSER_DEREFERENCE",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 12797
+              },
+              "end": {
+                "line": 2,
+                "column": 12878
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      },
+      {
+        "entry_kind": "ipc-handler",
+        "entry": "REMOTE_BROWSER_CONTEXT_RELEASE",
+        "channel": "REMOTE_BROWSER_CONTEXT_RELEASE",
+        "terminal": "electron.ipcMain.on",
+        "resolution": "candidate",
+        "steps": [
+          {
+            "kind": "call",
+            "label": "D",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 12879
+              },
+              "end": {
+                "line": 2,
+                "column": 12958
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "function",
+            "label": "closure",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8663
+              },
+              "end": {
+                "line": 2,
+                "column": 9047
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          },
+          {
+            "kind": "terminal",
+            "label": "electron.ipcMain.on",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 8677
+              },
+              "end": {
+                "line": 2,
+                "column": 9046
+              }
+            },
+            "module_key": "79459",
+            "module_runtime": "webpack-bootstrap@63"
+          }
+        ],
+        "conditions": [
+          {
+            "expression": "!(P)",
+            "location": {
+              "start": {
+                "line": 2,
+                "column": 9292
+              },
+              "end": {
+                "line": 2,
+                "column": 9293
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "package": null,
+  "coverage": {
+    "status": "complete",
+    "truncated": false,
+    "omitted_count": 0,
+    "limits": []
+  },
+  "js_path_sample": [
+    "app/1334.js",
+    "app/156.js",
+    "app/1566.js",
+    "app/1843.js",
+    "app/1892.js",
+    "app/2252.js",
+    "app/2312.js",
+    "app/2353.js",
+    "app/237.js",
+    "app/2766.js",
+    "app/292.js",
+    "app/3053.js",
+    "app/3173.js",
+    "app/3409.js",
+    "app/3642.js",
+    "app/369.js",
+    "app/3703.js",
+    "app/3739.js",
+    "app/3890.js",
+    "app/4491.js",
+    "app/4870.js",
+    "app/5056.js",
+    "app/5833.js",
+    "app/6428.js",
+    "app/6595.js",
+    "app/6787.js",
+    "app/7053.js",
+    "app/7103.js",
+    "app/7338.js",
+    "app/7396.js",
+    "app/7446.js",
+    "app/7627.js",
+    "app/8044.js",
+    "app/8374.js",
+    "app/8504.js",
+    "app/8589.js",
+    "app/8898.js",
+    "app/9197.js",
+    "app/9247.js",
+    "app/9771.js"
+  ],
+  "js_path_count": 57
+}

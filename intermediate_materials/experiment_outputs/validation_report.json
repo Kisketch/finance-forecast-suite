@@ -1,0 +1,1247 @@
+{
+  "generated_at": "2026-10-21T19:28:38",
+  "symbols": 97,
+  "rows": 685774,
+  "date_range": [
+    "1927-12-30",
+    "2026-10-21"
+  ],
+  "ohlc_violations": [],
+  "checks": [
+    {
+      "symbol": "000001.SS",
+      "rows": 7097,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 15
+    },
+    {
+      "symbol": "000002.SZ",
+      "rows": 8964,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "000300.SS",
+      "rows": 2000,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "0005.HK",
+      "rows": 6680,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "000688.SS",
+      "rows": 1647,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "000858.SZ",
+      "rows": 7056,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "0016.HK",
+      "rows": 6679,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "001979.SZ",
+      "rows": 8331,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "002594.SZ",
+      "rows": 3714,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "0386.HK",
+      "rows": 6472,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0388.HK",
+      "rows": 6554,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0688.HK",
+      "rows": 6679,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0700.HK",
+      "rows": 5518,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0823.HK",
+      "rows": 4677,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0857.HK",
+      "rows": 6611,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0883.HK",
+      "rows": 5583,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "0941.HK",
+      "rows": 6679,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "1088.HK",
+      "rows": 5266,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "1109.HK",
+      "rows": 6679,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "1299.HK",
+      "rows": 3935,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "1898.HK",
+      "rows": 4888,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "2318.HK",
+      "rows": 5512,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "300750.SZ",
+      "rows": 2026,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "3690.HK",
+      "rows": 1987,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "399001.SZ",
+      "rows": 7064,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 15
+    },
+    {
+      "symbol": "399006.SZ",
+      "rows": 2000,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "600028.SS",
+      "rows": 6199,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "600030.SS",
+      "rows": 5831,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "600036.SS",
+      "rows": 6025,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "600048.SS",
+      "rows": 4915,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "600519.SS",
+      "rows": 6186,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "600900.SS",
+      "rows": 5605,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 5
+    },
+    {
+      "symbol": "601012.SS",
+      "rows": 3527,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "601088.SS",
+      "rows": 4625,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "601318.SS",
+      "rows": 4775,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "601398.SS",
+      "rows": 4856,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "601857.SS",
+      "rows": 4606,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 4
+    },
+    {
+      "symbol": "9988.HK",
+      "rows": 1697,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "AAPL",
+      "rows": 11556,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "AMZN",
+      "rows": 7404,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "AVB",
+      "rows": 6401,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 1
+    },
+    {
+      "symbol": "BRK-B",
+      "rows": 7661,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "BZ=F",
+      "rows": 4787,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 1
+    },
+    {
+      "symbol": "CL=F",
+      "rows": 6569,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 1,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "COP",
+      "rows": 11291,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "CVX",
+      "rows": 16309,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "DLR",
+      "rows": 5528,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "DX-Y.NYB",
+      "rows": 14169,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "EOG",
+      "rows": 9329,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "EQIX",
+      "rows": 6586,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "EQR",
+      "rows": 7617,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 1
+    },
+    {
+      "symbol": "GC=F",
+      "rows": 6561,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "rows": 5578,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "GS",
+      "rows": 6909,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "HG=F",
+      "rows": 6565,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "ICLN",
+      "rows": 4609,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "JPM",
+      "rows": 11744,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "KMI",
+      "rows": 3945,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "LNG",
+      "rows": 8192,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "META",
+      "rows": 3626,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "MPC",
+      "rows": 3853,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "MS",
+      "rows": 8473,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "MSFT",
+      "rows": 10230,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "NG=F",
+      "rows": 6566,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "NVDA",
+      "rows": 6979,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "O",
+      "rows": 8055,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "OXY",
+      "rows": 11291,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "PLD",
+      "rows": 7271,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "PSA",
+      "rows": 11573,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "SI=F",
+      "rows": 6562,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "SLB",
+      "rows": 11291,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "SPG",
+      "rows": 8268,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "TAN",
+      "rows": 4659,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "VLO",
+      "rows": 11290,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "VNQ",
+      "rows": 5550,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLB",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLC",
+      "rows": 2096,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLE",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLF",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLI",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLK",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLP",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLRE",
+      "rows": 2774,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLU",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLV",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XLY",
+      "rows": 6999,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XOM",
+      "rows": 16309,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "XOP",
+      "rows": 5114,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^DJI",
+      "rows": 8762,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^GSPC",
+      "rows": 24818,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 1
+    },
+    {
+      "symbol": "^HSCE",
+      "rows": 8205,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^HSI",
+      "rows": 9823,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^HSTECH",
+      "rows": 1535,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^IXIC",
+      "rows": 14044,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^RUT",
+      "rows": 9852,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^TNX",
+      "rows": 16188,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    },
+    {
+      "symbol": "^VIX",
+      "rows": 9271,
+      "bad_high": 0,
+      "bad_low": 0,
+      "duplicate_dates": 0,
+      "nonpositive_close": 0,
+      "gaps_gt_10d": 0
+    }
+  ],
+  "cross_source": [
+    {
+      "symbol": "000001.SS",
+      "date": "latest_quote",
+      "tencent": 3713.03,
+      "app": 3713.027587890625,
+      "diff_pct": 0.0001,
+      "note": "kline unavailable: empty rows"
+    },
+    {
+      "symbol": "0700.HK",
+      "date": "latest_quote",
+      "tencent": 393.8,
+      "app": 393.7999877929688,
+      "diff_pct": 0.0,
+      "note": "kline unavailable: empty rows"
+    }
+  ],
+  "market": {
+    "^GSPC": {
+      "name_cn": "标普500",
+      "last": 7712.56982421875,
+      "ret_1w": -0.011899425243854456,
+      "ret_1m": -0.006713764830897251,
+      "ret_3m": 0.028485265209303057,
+      "ret_6m": 0.09181188589939149,
+      "ret_ytd": 0.12453208698442353,
+      "ret_1y": 0.15734671698750247,
+      "vol_1y": 0.12681342329982126,
+      "sharpe_1y": 1.2160475020299035,
+      "max_dd_1y": -0.09097524918009314,
+      "above_ma50": true,
+      "above_ma200": true,
+      "rsi14": 49.431994574831045
+    },
+    "^IXIC": {
+      "name_cn": "纳斯达克综合",
+      "last": 26424.8203125,
+      "ret_1w": -0.028655698907639415,
+      "ret_1m": -0.02570854735999184,
+      "ret_3m": 0.028567310242766597,
+      "ret_6m": 0.08923589698174883,
+      "ret_ytd": 0.13725426576219868,
+      "ret_1y": 0.1651170391000112,
+      "vol_1y": 0.18437805453937195,
+      "sharpe_1y": 0.9212589083038362,
+      "max_dd_1y": -0.1320547591425495,
+      "above_ma50": false,
+      "above_ma200": true,
+      "rsi14": 43.18616006156117
+    },
+    "^DJI": {
+      "name_cn": "道琼斯工业",
+      "last": 52495.87890625,
+      "ret_1w": 0.015981724803678654,
+      "ret_1m": 0.008589065255731887,
+      "ret_3m": 0.005310385521915206,
+      "ret_6m": 0.0680883476957721,
+      "ret_ytd": 0.08502036026149762,
+      "ret_1y": 0.13650544161607514,
+      "vol_1y": 0.12650354203112818,
+      "sharpe_1y": 1.0749360615541492,
+      "max_dd_1y": -0.10005351737415558,
+      "above_ma50": true,
+      "above_ma200": true,
+      "rsi14": 58.78264835279569
+    },
+    "^HSI": {
+      "name_cn": "恒生指数",
+      "last": 23651.869140625,
+      "ret_1w": -0.028479986727374396,
+      "ret_1m": -0.04439901237326882,
+      "ret_3m": -0.04984565762906079,
+      "ret_6m": -0.10277280625401386,
+      "ret_ytd": -0.10200294439195523,
+      "ret_1y": -0.10035827409149223,
+      "vol_1y": 0.18589690691387917,
+      "sharpe_1y": -0.4759220299485492,
+      "max_dd_1y": -0.18936689986118382,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 34.964375363419904
+    },
+    "^HSCE": {
+      "name_cn": "恒生国企",
+      "last": 7943.41015625,
+      "ret_1w": -0.028295776799031502,
+      "ret_1m": -0.03428285809605103,
+      "ret_3m": -0.03728730268895042,
+      "ret_6m": -0.10738768591352865,
+      "ret_ytd": -0.13366576327349977,
+      "ret_1y": -0.1511927470958747,
+      "vol_1y": 0.1941760602841801,
+      "sharpe_1y": -0.7469692371787487,
+      "max_dd_1y": -0.22275304272258933,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 35.76101535577125
+    },
+    "^HSTECH": {
+      "name_cn": "恒生科技",
+      "last": 3994.77,
+      "ret_1w": -0.034293615817706735,
+      "ret_1m": -0.0932311882873681,
+      "ret_3m": -0.14426452852580096,
+      "ret_6m": -0.21139720034822918,
+      "ret_ytd": -0.3036151341249973,
+      "ret_1y": -0.36183234154718635,
+      "vol_1y": 0.27309992291598495,
+      "sharpe_1y": -1.5068229920201,
+      "max_dd_1y": -0.3526627429882614,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 32.601828590531824
+    },
+    "000001.SS": {
+      "name_cn": "上证指数",
+      "last": 3713.027587890625,
+      "ret_1w": -0.014387097501698198,
+      "ret_1m": -0.04434765812233055,
+      "ret_3m": -0.04362892208982261,
+      "ret_6m": -0.07788095790131311,
+      "ret_ytd": -0.07714572088838312,
+      "ret_1y": -0.03870631886328313,
+      "vol_1y": 0.1439884914361504,
+      "sharpe_1y": -0.20185428104684003,
+      "max_dd_1y": -0.1261253153058074,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 30.32765331322399
+    },
+    "000300.SS": {
+      "name_cn": "沪深300",
+      "last": 4111.93,
+      "ret_1w": -0.02507302592894667,
+      "ret_1m": -0.08217487187728778,
+      "ret_3m": -0.12482893221778335,
+      "ret_6m": -0.12535947656808344,
+      "ret_ytd": -0.1284129086958825,
+      "ret_1y": -0.10998149370677801,
+      "vol_1y": 0.17754598939830835,
+      "sharpe_1y": -0.5671127122003734,
+      "max_dd_1y": -0.18731100508729825,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 20.046409876459293
+    },
+    "399006.SZ": {
+      "name_cn": "创业板指",
+      "last": 2694.71,
+      "ret_1w": -0.06001548786783695,
+      "ret_1m": -0.17983734987429922,
+      "ret_3m": -0.27021281205483605,
+      "ret_6m": -0.24274630254627616,
+      "ret_ytd": -0.1820703889757327,
+      "ret_1y": -0.16778824030809047,
+      "vol_1y": 0.3429366775748654,
+      "sharpe_1y": -0.36333043743771887,
+      "max_dd_1y": -0.38364223156960553,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 17.30565922181067
+    }
+  },
+  "sectors": {
+    "real_estate": {
+      "etf": "XLRE",
+      "name_cn": "美国房地产ETF",
+      "last": 42.380001068115234,
+      "ret_1w": 0.013148439229859754,
+      "ret_1m": -0.0049307134003354625,
+      "ret_3m": -0.050505900844682206,
+      "ret_6m": -0.01527583084744244,
+      "ret_ytd": 0.07481386097233456,
+      "ret_1y": 0.04365641037251211,
+      "vol_1y": 0.14321695990142924,
+      "sharpe_1y": 0.37008856647269506,
+      "max_dd_1y": -0.11081303907865925,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 54.73155000584113
+    },
+    "energy": {
+      "etf": "XLE",
+      "name_cn": "美国能源ETF",
+      "last": 67.97000122070312,
+      "ret_1w": 0.01145839743198196,
+      "ret_1m": 0.08821649402809939,
+      "ret_3m": 0.15496649591874112,
+      "ret_6m": 0.2326313666033999,
+      "ret_ytd": 0.5184461098161912,
+      "ret_1y": 0.6261445825246157,
+      "vol_1y": 0.2196233640329506,
+      "sharpe_1y": 2.32584925295543,
+      "max_dd_1y": -0.1497625677943054,
+      "above_ma50": true,
+      "above_ma200": true,
+      "rsi14": 67.30105275402371
+    },
+    "oil_gas": {
+      "etf": "XOP",
+      "name_cn": "油气勘探生产ETF",
+      "last": 200.0500030517578,
+      "ret_1w": 0.0011510145086015555,
+      "ret_1m": 0.0828146308620179,
+      "ret_3m": 0.13736718186108487,
+      "ret_6m": 0.22322469297570824,
+      "ret_ytd": 0.5713650650432776,
+      "ret_1y": 0.651878461447744,
+      "vol_1y": 0.28655209574402496,
+      "sharpe_1y": 1.8968868328865984,
+      "max_dd_1y": -0.18503561204266394,
+      "above_ma50": true,
+      "above_ma200": true,
+      "rsi14": 63.82350142194592
+    },
+    "clean_energy": {
+      "etf": "ICLN",
+      "name_cn": "全球清洁能源ETF",
+      "last": 16.329999923706055,
+      "ret_1w": -0.04947615636617009,
+      "ret_1m": -0.08258423462703723,
+      "ret_3m": -0.11920177360781048,
+      "ret_6m": -0.155988095378925,
+      "ret_ytd": -0.04246607270554725,
+      "ret_1y": -0.0017409089944516731,
+      "vol_1y": 0.30605606394124146,
+      "sharpe_1y": 0.14782221390149267,
+      "max_dd_1y": -0.3135308202885564,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 35.61504495375243
+    },
+    "solar": {
+      "etf": "TAN",
+      "name_cn": "太阳能ETF",
+      "last": 41.75,
+      "ret_1w": -0.059260950987330085,
+      "ret_1m": -0.10618709444850882,
+      "ret_3m": -0.22282205786864373,
+      "ret_6m": -0.23646671969663247,
+      "ret_ytd": -0.19089144894182797,
+      "ret_1y": -0.10330758658547323,
+      "vol_1y": 0.3779701540376141,
+      "sharpe_1y": -0.09938227903994643,
+      "max_dd_1y": -0.4412281725582661,
+      "above_ma50": false,
+      "above_ma200": false,
+      "rsi14": 37.11811505929414
+    },
+    "tech": {
+      "etf": "XLK",
+      "name_cn": "科技",
+      "last": 185.44000244140625,
+      "ret_1w": -0.0552272080971401,
+      "ret_1m": -0.04829357642981136,
+      "ret_3m": 0.02987965496774514,
+      "ret_6m": 0.2016147698703772,
+      "ret_ytd": 0.28973593568659006,
+      "ret_1y": 0.30796232146007085,
+      "vol_1y": 0.2638962958241442,
+      "sharpe_1y": 1.149872420296945,
+      "max_dd_1y": -0.15922708874754576,
+      "above_ma50": false,
+      "above_ma200": true,
+      "rsi14": 38.153345095904605
+    },
+    "finance": {
+      "etf": "XLF",
+      "name_cn": "金融",
+      "last": 55.720001220703125,
+      "ret_1w": 0.016417393850585604,
+      "ret_1m": -0.0032200411495955095,
+      "ret_3m": -0.0023692482518521407,
+      "ret_6m": 0.07290784767839797,
+      "ret_ytd": 0.02678907719294843,
+      "ret_1y": 0.08468078707442461,
+      "vol_1y": 0.1443100401204896,
+      "sharpe_1y": 0.6356010934601024,
+      "max_dd_1y": -0.14794749104323002,
+      "above_ma50": false,
+      "above_ma200": true,
+      "rsi14": 56.21708460636024
+    },
+    "utilities": {
+      "etf": "XLU",
+      "name_cn": "公用事业ETF",
+      "last": 41.880001068115234,
+      "ret_1w": 0.000238885514344922,
+      "ret_1m": 0.03000494897396755,
+      "ret_3m": -0.08147308458585145,
+      "ret_6m": -0.05545427295747174,
+      "ret_ytd": -0.009861797567771391,
+      "ret_1y": -0.05920123303302749,
+      "vol_1y": 0.15539169040520492,
+      "sharpe_1y": -0.3148338509158783,
+      "max_dd_1y": -0.16050130932609785,
+      "above_ma50": true,
+      "above_ma200": false,
+      "rsi14": 56.120824299588584
+    }
+  },
+  "correlation": {
+    "symbols": [
+      "^GSPC",
+      "^HSI",
+      "000001.SS",
+      "CL=F",
+      "GC=F",
+      "DX-Y.NYB"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.063,
+        0.1241,
+        -0.3903,
+        0.3196,
+        -0.3322
+      ],
+      [
+        0.063,
+        1.0,
+        0.5147,
+        0.0292,
+        0.2993,
+        -0.1375
+      ],
+      [
+        0.1241,
+        0.5147,
+        1.0,
+        -0.0295,
+        0.3442,
+        -0.0496
+      ],
+      [
+        -0.3903,
+        0.0292,
+        -0.0295,
+        1.0,
+        -0.1466,
+        0.2199
+      ],
+      [
+        0.3196,
+        0.2993,
+        0.3442,
+        -0.1466,
+        1.0,
+        -0.3907
+      ],
+      [
+        -0.3322,
+        -0.1375,
+        -0.0496,
+        0.2199,
+        -0.3907,
+        1.0
+      ]
+    ]
+  }
+}

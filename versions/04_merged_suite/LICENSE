@@ -1,0 +1,43 @@
+MIT License
+
+Copyright (c) 2026 Kisketch
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Scope of this license / 授权范围
+
+The MIT license above covers **the source code written for this project**:
+the FinPredict application (`FinPredict/src/`), the FIN_Terminal application
+source (`project/src/`, `project/scripts/`, `project/config/`), and the
+documentation in this repository.
+
+The MIT license **does NOT** cover:
+
+| Item | Reason / 说明 |
+|------|----------------|
+| `project/reverse/` | Third-party reverse-engineering evidence (TradingView). Not redistributed in the repository; local research only. 第三方逆向证据，不随仓库分发 |
+| `project/data/` | Market data redistributed by Tencent / yfinance / Yahoo. Copyright belongs to the original providers; please comply with their terms. 数据版权归原提供方 |
+| `FinPredict/dist_*/`, `project/dist/` | Build outputs; final binaries are published as GitHub Release assets. 构建产物 |
+
+Market data, official announcements and research reports referenced by the
+applications remain the property of their respective publishers (Tencent
+Quotes, Yahoo Finance, SEC EDGAR, central banks, exchanges). This project is
+for research and education only and does not provide investment advice.

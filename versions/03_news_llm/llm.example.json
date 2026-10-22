@@ -1,0 +1,8 @@
+{
+  "base_url": "http://127.0.0.1:11434/v1",
+  "api_key": "",
+  "model": "qwen2.5:7b",
+  "timeout_seconds": 60,
+  "temperature": 0.1,
+  "max_tokens": 900
+}

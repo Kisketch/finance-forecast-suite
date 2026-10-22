@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金融分析预测终端 · FIN Terminal</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/echarts.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div class="brand-text"><strong>FIN·TERMINAL</strong><span>金融分析预测</span></div>
+    </div>
+    <nav id="nav">
+      <button class="nav-item active" data-page="overview"><span class="ico">◫</span><span class="label">总览</span></button>
+      <button class="nav-item" data-page="markets"><span class="ico">◧</span><span class="label">市场</span></button>
+      <button class="nav-item" data-page="sectors"><span class="ico">▦</span><span class="label">板块</span></button>
+      <button class="nav-item" data-page="stock"><span class="ico">◈</span><span class="label">个股</span></button>
+      <button class="nav-item" data-page="forecast"><span class="ico">◇</span><span class="label">预测实验室</span></button>
+      <button class="nav-item" data-page="news"><span class="ico">◔</span><span class="label">新闻事件</span></button>
+      <button class="nav-item" data-page="model"><span class="ico">⚙</span><span class="label">模型接入</span></button>
+      <button class="nav-item" data-page="audit"><span class="ico">⌁</span><span class="label">算法审查</span></button>
+      <button class="nav-item" data-page="analysts"><span class="ico">◉</span><span class="label">券商观点</span></button>
+      <button class="nav-item" data-page="quality"><span class="ico">◎</span><span class="label">数据质量</span></button>
+    </nav>
+    <div class="side-foot">
+      <div class="dot" id="statusDot"></div>
+      <div><span id="sideStatus">连接中</span><small id="sideAsOf">—</small></div>
+    </div>
+    <div class="side-note">数据仅供研究，不构成投资建议</div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div class="title-block">
+        <h1 id="pageTitle">总览</h1>
+        <p id="pageSub">全球市场脉搏 · 多市场 / 多板块</p>
+      </div>
+      <div class="top-actions">
+        <div class="asof"><span>数据截至</span><strong id="asOf">—</strong></div>
+        <input id="globalSearch" list="symbolList" placeholder="搜索代码 / 名称  Enter" autocomplete="off">
+        <datalist id="symbolList"></datalist>
+      </div>
+    </header>
+
+    <div id="loading" class="loading"><span></span>正在加载数据…</div>
+
+    <!-- ================= 总览 ================= -->
+    <section id="page-overview" class="page active">
+      <div class="kpi-row" id="indexCards"></div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>板块热力图</h2><span class="hint">近 1 个月 · 绝对收益</span></div>
+          <div id="sectorHeat" class="chart h320"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>市场宽度</h2><span class="hint">成分股站上均线比例</span></div>
+          <div id="breadthBox" class="breadth-box"></div>
+          <div class="panel-subhead">跨市场相关性（近 252 日）</div>
+          <div id="corrHeat" class="chart h240"></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>指数表现</h2><span class="hint">按 1 个月排序</span></div>
+          <div class="table-wrap"><table id="indexTable"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>技术信号</h2><span class="hint">RSI 极值 / 50 日均线穿越</span></div>
+          <div id="signalList" class="signal-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 市场 ================= -->
+    <section id="page-markets" class="page">
+      <div class="chip-row" id="marketTabs">
+        <button class="chip active" data-market="US">美股 · NASDAQ/NYSE</button>
+        <button class="chip" data-market="HK">港股 · HKEX</button>
+        <button class="chip" data-market="CN">A股 · SSE/SZSE</button>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2 id="marketChartTitle">标普500</h2><span class="hint" id="marketChartHint">近 3 年 · 对数收益归一</span></div>
+          <div id="marketChart" class="chart h380"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>市场概览</h2><span class="hint" id="marketBreadthHint">—</span></div>
+          <div id="marketStats" class="stat-grid"></div>
+          <div class="panel-subhead">主要标的（近 1 个月）</div>
+          <div class="table-wrap tall"><table id="marketTable"></table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 板块 ================= -->
+    <section id="page-sectors" class="page">
+      <div class="chip-row" id="sectorTabs">
+        <button class="chip active" data-sector="real_estate">房地产</button>
+        <button class="chip" data-sector="energy">能源</button>
+        <button class="chip" data-sector="oil_gas">油气开采</button>
+        <button class="chip" data-sector="clean_energy">清洁能源</button>
+        <button class="chip" data-sector="tech">科技</button>
+        <button class="chip" data-sector="finance">金融</button>
+        <button class="chip" data-sector="utilities">公用事业</button>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2 id="sectorTitle">房地产</h2><span class="hint" id="sectorHint">—</span></div>
+          <div id="sectorChart" class="chart h360"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>相对强弱</h2><span class="hint">板块 ETF / 标普500 · 近 6 个月</span></div>
+          <div id="rsChart" class="chart h200"></div>
+          <div class="panel-subhead">板块 ETF 关键指标</div>
+          <div id="sectorStats" class="stat-grid compact"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>成分标的</h2><span class="hint">按近 1 个月收益排序</span></div>
+        <div class="table-wrap"><table id="sectorTable"></table></div>
+      </div>
+    </section>
+
+    <!-- ================= 个股 ================= -->
+    <section id="page-stock" class="page">
+      <div class="toolbar">
+        <div class="field"><label>标的</label><select id="stockSelect"></select></div>
+        <div class="field"><label>区间</label><select id="stockRange">
+          <option value="3m">3 个月</option><option value="6m">6 个月</option>
+          <option value="1y" selected>1 年</option><option value="3y">3 年</option><option value="max">全部</option>
+        </select></div>
+        <div class="stock-title"><strong id="stockName">—</strong><span id="stockMeta">—</span></div>
+      </div>
+      <div class="grid-2 wide-left">
+        <div class="panel">
+          <div class="panel-head"><h2>K 线与均线</h2><span class="hint">前复权 · MA20/50/200 · BOLL</span></div>
+          <div id="stockChart" class="chart h420"></div>
+          <div id="volumeChart" class="chart h120"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>关键指标</h2><span class="hint" id="stockAsOf">—</span></div>
+          <div id="stockStats" class="stat-list"></div>
+          <div class="panel-subhead">动量 / 风险</div>
+          <div id="stockMomentum" class="chart h220"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>RSI 与 MACD</h2><span class="hint">14 日 RSI · 12/26/9 MACD</span></div>
+        <div id="indicatorChart" class="chart h240"></div>
+      </div>
+    </section>
+
+    <!-- ================= 预测 ================= -->
+    <section id="page-forecast" class="page">
+      <div class="panel">
+        <div class="toolbar">
+          <div class="field"><label>标的</label><select id="fcSymbol"></select></div>
+          <div class="field"><label>预测周期</label><select id="fcHorizon">
+            <option value="1">1 日</option><option value="5" selected>5 日</option><option value="20">20 日</option>
+          </select></div>
+          <div class="field"><label>模型</label><select id="fcModel">
+            <option value="ridge" selected>Ridge 线性因子</option>
+            <option value="gbm">梯度提升树</option>
+            <option value="rf">随机森林</option>
+            <option value="ensemble">Ridge+GBM+RF 集成</option>
+          </select></div>
+          <button id="fcRun" class="primary-btn">运行滚动回测</button>
+        </div>
+        <p class="disclaimer">严格样本外滚动验证；训练集只使用目标已实现的样本。结果与随机游走基准对比，未跑赢基准会明确标注。</p>
+      </div>
+      <div id="fcEmpty" class="empty-state">选择标的与参数后运行。Ridge/GBM 约 5–30 秒；RandomForest/集成约 20–60 秒。</div>
+      <div id="fcResult" class="fc-result hidden">
+        <div class="kpi-row" id="fcKpis"></div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-head"><h2>样本外：预测 vs 实际</h2><span class="hint" id="fcFoldsHint">—</span></div>
+            <div id="fcWalkChart" class="chart h320"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>未来情景区间</h2><span class="hint">残差分位数 · 非收益承诺</span></div>
+            <div id="fcFanChart" class="chart h320"></div>
+            <div id="fcScenario" class="scenario-line"></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>诊断与限制</h2><span class="hint">必须阅读</span></div>
+          <ul id="fcNotes" class="notes"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 新闻事件 ================= -->
+    <section id="page-news" class="page">
+      <div class="panel">
+        <div class="toolbar">
+          <button id="newsSync" class="primary-btn">同步官方新闻</button>
+          <button id="newsAnalyze" class="ghost-btn">分析待处理</button>
+          <button id="newsReanalyze" class="ghost-btn" title="用已配置的模型覆盖现有规则分析（会消耗模型调用）">模型重分析</button>
+          <button id="marketSync" class="ghost-btn">同步行情</button>
+          <span class="hint" id="newsLLMStatus">模型：未配置</span>
+          <span class="hint" id="newsLastSync">—</span>
+          <span class="hint" id="marketSyncOut"></span>
+        </div>
+        <p class="disclaimer">只聚合官方一级源：政府、央行、监管、交易所、多边机构、公司新闻室；不含社交媒体、论坛和聚合站。新闻正文是不可信数据，分析结果据此生成，需人工复核。行情为日线，综合预测的是下一交易日/周期，不是盘中实时。</p>
+      </div>
+      <div class="kpi-row" id="newsKpis"></div>
+      <div class="grid-2 news-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>官方新闻流</h2><span class="hint" id="newsCountHint">—</span></div>
+          <div class="chip-row" id="newsFilters">
+            <button class="chip active" data-news-region="ALL">全部</button>
+            <button class="chip" data-news-region="US">美国</button>
+            <button class="chip" data-news-region="HK">香港</button>
+            <button class="chip" data-news-region="CN">中国</button>
+            <button class="chip" data-news-region="EU">欧洲</button>
+            <button class="chip" data-news-region="GLOBAL">全球</button>
+            <button class="chip" id="newsOnlyAnalyzed">仅已分析</button>
+          </div>
+          <div id="newsList" class="news-list"><div class="empty-state">点击“同步官方新闻”获取最新官方信息。</div></div>
+        </div>
+        <div>
+          <div class="panel">
+            <div class="panel-head"><h2>新闻影响系数</h2><span class="hint" id="impactHint">近 48 小时</span></div>
+            <div id="newsImpact" class="impact-box"><div class="hint">暂无分析结果</div></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>综合预测</h2><span class="hint">价格先验 × 新闻系数</span></div>
+            <div class="toolbar">
+              <div class="field"><label>标的</label><select id="npSymbol"></select></div>
+              <div class="field"><label>周期</label><select id="npHorizon">
+                <option value="1">1 日（下一交易日）</option><option value="5" selected>5 日</option><option value="20">20 日</option>
+              </select></div>
+              <button id="npRun" class="primary-btn">生成综合预测</button>
+            </div>
+            <div id="npResult" class="empty-state">选择标的与周期，生成“价格先验 + 官方新闻”的透明加权结果。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 模型接入 ================= -->
+    <section id="page-model" class="page">
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>模型接入</h2><span class="hint">OpenAI-compatible</span></div>          <div class="form-grid">
+            <label class="form-field"><span>Base URL</span><input id="llmBase" placeholder="http://127.0.0.1:11434/v1"></label>
+            <label class="form-field"><span>模型</span><input id="llmModel" placeholder="qwen2.5:7b / deepseek-chat"></label>
+            <label class="form-field"><span>API Key</span><input id="llmKey" type="password" placeholder="留空表示不修改"></label>
+          </div>
+          <div class="toolbar">
+            <button id="llmSave" class="primary-btn">保存配置</button>
+            <button id="llmTest" class="ghost-btn">测试连接</button>
+            <span id="llmOut" class="hint">—</span>
+          </div>
+          <p class="disclaimer">支持 Ollama、LM Studio、vLLM、DeepSeek、OpenAI 等 OpenAI 兼容端点。密钥只写入本地 <code>config/llm.local.json</code>，不会回传前端。未配置时，新闻分析自动使用规则评分。</p>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>自主优化</h2><span class="hint">受限在线权重更新</span></div>
+          <div id="optimizerStatus" class="stat-grid compact"><div class="hint">—</div></div>
+          <div class="toolbar">
+            <button id="optimizerUpdate" class="primary-btn">评估并优化</button>
+            <button id="optimizerPropose" class="ghost-btn">让模型提议</button>
+          </div>
+          <p class="disclaimer">只有前向样本 ≥20 才更新；单次新闻总权重变化 ≤±0.05，区域权重 ≤±8%，硬边界 0.05–0.35 / 0.5–1.5；所有变更写入审计历史。模型只能提议，不能改代码。</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>前向验证</h2><span class="hint" id="perfHint">新闻层无历史库，只做影子测试</span></div>
+        <div id="newsPerf" class="stat-grid compact"></div>
+        <div class="table-wrap tall"><table id="newsPredTable"></table></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>官方源健康</h2><span class="hint">最近一次同步 · 失败源会保留错误</span></div>
+        <div class="table-wrap"><table id="sourceHealth"></table></div>
+      </div>
+    </section>
+
+    <!-- ================= 算法审查 ================= -->
+    <section id="page-audit" class="page">
+      <div id="auditVerdict" class="audit-verdict"></div>
+      <div class="kpi-row" id="auditKpis"></div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>1948 → 1949 历史留出</h2><span class="hint">训练只用 1948-12-31 前已实现的目标；仅价量特征</span></div>
+        <div class="table-wrap"><table id="audit1949"></table></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>1950–2026 年度滚动</h2><span class="hint">按十年分组 · 5 日周期 · 集成模型</span></div>
+          <div class="table-wrap tall"><table id="auditWalk"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>区间校准</h2><span class="hint">前 70% 残差校准，后 30% 评估</span></div>
+          <div class="table-wrap"><table id="auditInterval"></table></div>
+          <div class="panel-subhead">置信度–覆盖率</div>
+          <div class="table-wrap tall"><table id="auditConfidence"></table></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>现代模型对比</h2><span class="hint">2000–2026 · 5 日周期 · 样本外</span></div>
+          <div class="table-wrap"><table id="auditModels"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>区域 / 领域模型</h2><span class="hint">Ridge · 价格特征 vs 跨资产上下文 · 2000–2026</span></div>
+          <div class="table-wrap tall"><table id="auditRegional"></table></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>成本后策略</h2><span class="hint">只多/现金 · 5bp 单边 · 5 日周期 · 样本外</span></div>
+        <div id="auditStrategy" class="stat-grid compact"></div>
+        <p class="disclaimer">把方向预测转成可执行仓位：预测为正则持有，否则现金；扣 5bp 单边成本。用于区分“统计准确率”与“可执行收益”。</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>稀有事件</h2><span class="hint">3σ 尾部 · 训练降权 · 单独评估</span></div>
+          <div id="auditRare" class="stat-grid compact"></div>
+          <div class="panel-subhead">降权对照（2000–2026 Ridge）</div>
+          <div class="table-wrap"><table id="auditWeights"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>泄漏检查</h2><span class="hint">目标日期 / 训练截止 / 特征位移</span></div>
+          <div id="auditLeakage" class="notes"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>开源量化项目审查</h2><span class="hint">协议 / 维护状态 / 我们是否采用</span></div>
+        <p class="disclaimer">Star 为公开快照约数；许可证以 repo 根目录为准。GPL/AGPL 属 copyleft，闭源商用需合规评估。本项目未复制这些项目的源码，仅借鉴公开思想并用 pandas/scikit-learn 重写。</p>
+        <div class="table-wrap tall"><table id="auditProjects"></table></div>
+        <ul id="auditCompliance" class="notes"></ul>
+      </div>
+    </section>
+
+    <!-- ================= 券商观点 ================= -->
+    <section id="page-analysts" class="page">
+      <div class="chip-row" id="analystFilters">
+        <button class="chip active" data-filter="all">全部</button>
+        <button class="chip" data-filter="US">美股</button>
+        <button class="chip" data-filter="HK">港股</button>
+        <button class="chip" data-filter="CN">A股</button>
+        <button class="chip" data-filter="energy">能源</button>
+        <button class="chip" data-filter="real_estate">房地产</button>
+      </div>
+      <div class="analyst-grid" id="analystGrid"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>使用说明</h2></div>
+        <p class="disclaimer">以下为公开报道/机构页面口径的摘要，均标注来源与日期；目标价与观点会随时间变化，不构成投资建议。未标注来源的数字不做展示。</p>
+      </div>
+    </section>
+
+    <!-- ================= 数据质量 ================= -->
+    <section id="page-quality" class="page">
+      <div class="kpi-row" id="qualityKpis"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>逐标的覆盖</h2><span class="hint">行数 / 起止日期 / 缺失与异常</span></div>
+        <div class="table-wrap tall"><table id="qualityTable"></table></div>
+      </div>
+    </section>
+
+    <footer class="footer">FIN Terminal · 数据源 Yahoo Finance (yfinance) · 逆向证据 REA · 仅用于研究与教育</footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

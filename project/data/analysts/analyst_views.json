@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "as_of": "2026-10-21",
+    "note": "以下为公开报道/机构页面口径的摘要，均标注来源与日期；目标价与观点会随时间变化，不构成投资建议。部分机构预测在年内多次修订，已在观点中注明。",
+    "method": "人工检索公开来源 + 原文摘录；未标注来源的数字不收录。"
+  },
+  "views": [
+    {
+      "firm": "Goldman Sachs",
+      "analyst": "David Kostin（首席美股策略师）",
+      "market": "US",
+      "sector": "equity",
+      "target": "标普500 2026 年底 7,600",
+      "view": "牛市在成熟而非结束；预计 2026 年 EPS 增长约 12%，盈利仍是主要驱动。此前曾给出 6,500 的目标，后因盈利上修上调。",
+      "date": "2026-04-02",
+      "source": "https://markets.financialcontent.com/stocks/article/marketminute-2026-4-2-goldman-sachs-projects-s-and-p-500-to-hit-7600-by-year-end-2026-on-robust-12-earnings-growth",
+      "source_title": "Goldman Sachs Projects S&P 500 to Hit 7600 by Year-End 2026",
+      "tags": ["US", "equity"]
+    },
+    {
+      "firm": "Morgan Stanley",
+      "analyst": "Mike Wilson（CIO / 首席美股策略师）",
+      "market": "US",
+      "sector": "equity",
+      "target": "标普500 2026 年底 7,800；2027 年中 8,300",
+      "view": "维持对 2026 年的建设性看法，认为盈利增长与市场广度改善支撑上行；2026 年 9 月表示债市波动可能带来 5%–10% 的回调，但属于健康调整。",
+      "date": "2026-09-29",
+      "source": "https://www.morningstar.com/news/marketwatch/2026092931/morgan-stanleys-mike-wilson-says-an-sp-500-correction-may-be-exactly-what-the-market-needs",
+      "source_title": "Morgan Stanley's Mike Wilson says an S&P 500 correction may be exactly what the market needs",
+      "tags": ["US", "equity"]
+    },
+    {
+      "firm": "J.P. Morgan",
+      "analyst": "全球研究团队",
+      "market": "US",
+      "sector": "equity",
+      "target": "标普500 2026 年底 8,000",
+      "view": "2026 年 8 月将目标由 7,800 上调至 8,000，理由为二季度盈利强劲、AI 变现加速；EPS 假设约 350 美元。",
+      "date": "2026-08-10",
+      "source": "https://www.reuters.com/business/jp-morgan-lifts-2026-end-target-sp-500-8000-ai-earnings-strength-2026-08-10/",
+      "source_title": "J.P. Morgan lifts 2026-end target for S&P 500 to 8000",
+      "tags": ["US", "equity"]
+    },
+    {
+      "firm": "Goldman Sachs",
+      "analyst": "大宗商品研究团队",
+      "market": "GLOBAL",
+      "sector": "energy",
+      "target": "布伦特 2026 年均价 83 美元 / WTI 78 美元；Q4 一度看 90 后下调至 80",
+      "view": "2026 年 4 月给出布伦特/WTI 年均 83/78 美元，并提示双向风险；此后随霍尔木兹海峡复航，将 2026Q4 布伦特预测由 90 下调至 80 美元、2027 年均价由 80 下调至 75 美元。预测随中东局势高频修订。",
+      "date": "2026-04-15",
+      "source": "https://www.reuters.com/business/energy/goldman-sachs-flags-twoway-risks-their-2026-oil-price-outlook-2026-04-15/",
+      "source_title": "Goldman Sachs flags two-way risks to their 2026 oil price outlook",
+      "tags": ["GLOBAL", "energy"]
+    },
+    {
+      "firm": "IEA",
+      "analyst": "Oil Market Report（2026 年 10 月）",
+      "market": "GLOBAL",
+      "sector": "energy",
+      "target": "2026 年全球石油需求 -2.6 mb/d；2026Q4 -2.5 mb/d（同比）",
+      "view": "10 月月报预计 2026 年全球石油需求同比下降 2.6 mb/d，四季度同比下降 2.5 mb/d；全球供应 9 月环比增加 2.5 mb/d。需求端偏弱，供应端恢复。",
+      "date": "2026-10-14",
+      "source": "https://www.iea.org/reports/oil-market-report-october-2026",
+      "source_title": "Oil Market Report - October 2026",
+      "tags": ["GLOBAL", "energy"]
+    },
+    {
+      "firm": "JLL",
+      "analyst": "全球研究部",
+      "market": "GLOBAL",
+      "sector": "real_estate",
+      "target": "2026 年全球商业地产：基本面改善、选择性复苏",
+      "view": "多数主要市场经济正增长、贸易紧张缓和、通胀回落，商业地产基本面持续改善；2026 年房地产与能源的关系从“相邻”走向“共生”，可靠清洁电力成为资产竞争力核心。",
+      "date": "2025-12-29",
+      "source": "https://www.jll.cn/zh-cn/insights/market-outlook/global-real-estate",
+      "source_title": "全球房地产市场展望",
+      "tags": ["GLOBAL", "real_estate"]
+    },
+    {
+      "firm": "Deloitte",
+      "analyst": "德勤中国房地产研究",
+      "market": "GLOBAL",
+      "sector": "real_estate",
+      "target": "2026 年商业地产：主动的务实派",
+      "view": "2026 年市场并非坐等复苏，而是通过敏捷资本配置、聚焦结构性增长领域、利用改善的债务窗口来推进；行业进入主动管理阶段。",
+      "date": "2026-01-27",
+      "source": "https://www.deloitte.com/cn/zh/Industries/real-estate/perspectives//2026-commercial-real-estate-outlook.html",
+      "source_title": "2026年商业地产行业展望报告",
+      "tags": ["GLOBAL", "real_estate"]
+    },
+    {
+      "firm": "中金公司",
+      "analyst": "研究部",
+      "market": "HK",
+      "sector": "equity",
+      "target": "2026 年港股：流动性逻辑延续，指数空间有限",
+      "view": "2025 年恒指与恒生科技涨幅均约 30%、领跑全球；展望 2026 年，基于盈利与估值分析，对港股指数空间持谨慎态度，流动性逻辑仍在但估值扩张受限。",
+      "date": "2025-12-01",
+      "source": "https://www.cls.cn/detail/2196790",
+      "source_title": "展望2026年港股：中金称流动性逻辑延续 预计指数空间有限",
+      "tags": ["HK", "equity"]
+    },
+    {
+      "firm": "富途证券",
+      "analyst": "研究团队",
+      "market": "HK",
+      "sector": "equity",
+      "target": "恒生指数 2026 年 31,000",
+      "view": "以约 10 倍历史平均市盈率为基准，给出恒指 2026 年基本预测 31,000 点；盈利与估值双升情形下空间更大。",
+      "date": "2026-01-01",
+      "source": "https://www.futuhk.com/hans/blog/detail-2026-hsi-102-260175001",
+      "source_title": "【2026港股展望乐观】恒指目标31000点",
+      "tags": ["HK", "equity"]
+    },
+    {
+      "firm": "浦银国际",
+      "analyst": "研究部",
+      "market": "HK",
+      "sector": "equity",
+      "target": "恒生指数 2026 年底 27,600",
+      "view": "对应 2026 年预期市盈率 10.8 倍，较发布时约有 4.6% 上行空间；基准情形假设中国经济稳步恢复、政策积极。",
+      "date": "2025-12-01",
+      "source": "https://www.spdbi.com/getfile/index/action/images/name/2026%E5%B9%B4%E4%B8%AD%E5%9B%BD%E5%B8%82%E5%9C%BA%E7%AD%96%E7%95%A5%E5%B1%95%E6%9C%9B%EF%BC%9A%E9%9C%80%E6%B1%82%E5%BC%95%E9%A2%86%E5%A2%9E%E9%95%BF%EF%BC%8C%E6%8B%A5%E6%8A%B1%E6%96%B0%E6%A0%B8%E5%BF%83%E8%B5%84%E4%BA%A7_%E6%B5%A6%E9%93%B6%E5%9B%BD%E9%99%85%E7%A0%94%E7%A9%B6.pdf",
+      "source_title": "2026 年中国市场策略展望：需求引领增长，拥抱新核心资产",
+      "tags": ["HK", "equity"]
+    },
+    {
+      "firm": "光大证券国际",
+      "analyst": "研究部",
+      "market": "HK",
+      "sector": "equity",
+      "target": "恒生指数 2026 下半年 28,000；恒生科技 6,000",
+      "view": "预计港股下半年有望再试年内高位，建议关注人工智能、创新药等方向。",
+      "date": "2026-06-01",
+      "source": "https://www.stcn.com/article/detail/3942421.html",
+      "source_title": "2026年下半年恒指目标为28000点，看好四大板块",
+      "tags": ["HK", "equity"]
+    },
+    {
+      "firm": "海通国际",
+      "analyst": "研究部",
+      "market": "HK",
+      "sector": "equity",
+      "target": "恒生指数 2026 年 34,000（券商中最乐观）",
+      "view": "在多家大行中给出最高的 2026 年恒指目标 34,000 点；摩根士丹利基本情形为 27,500 点。",
+      "date": "2025-12-01",
+      "source": "https://www.stheadline.com/zh-hans/stock-market/3531638/%E6%B8%AF%E8%82%A12026%E6%9C%80%E7%89%9B%E7%9C%8B34000%E7%82%B9-AI%E7%BB%AD%E5%B7%A6%E5%8F%B3%E5%A4%A7%E5%B1%80-%E7%9B%B8%E5%AF%B9%E7%BE%8E%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%8D%E4%BE%BF%E5%AE%9C",
+      "source_title": "港股2026最「牛」看34000点 AI续左右大局",
+      "tags": ["HK", "equity"]
+    },
+    {
+      "firm": "中金公司",
+      "analyst": "研究部",
+      "market": "CN",
+      "sector": "equity",
+      "target": "A股 2026：向新致远，首次慢牛",
+      "view": "2026 年 6 月中期策略提出“向新致远”，看好 AI 技术革命与国际秩序重构；认为 A 股有望走出首次慢牛，结构上偏向新核心资产。",
+      "date": "2026-06-02",
+      "source": "https://www.cicc.com/upload/file/2026/06/08/9dfc8394-74f3-484c-8bd1-d1ccddc1805a.pdf",
+      "source_title": "A股2026下半年展望",
+      "tags": ["CN", "equity"]
+    },
+    {
+      "firm": "中信证券",
+      "analyst": "裘翔（首席 A 股策略师）",
+      "market": "CN",
+      "sector": "equity",
+      "target": "A股 2026：盈利前低后高，低波动慢牛",
+      "view": "2026 年 A 股公司盈利增速前低后高；中国企业从本土化走向全球敞口，份额优势转化为定价权，是慢牛基础。2026 年四季度策略建议“科技 + 红利”双线。",
+      "date": "2026-10-09",
+      "source": "https://finance.sina.cn/2026-10-09/detail-iniusaix2633990.d.html",
+      "source_title": "券商四季度策略出炉：A股修复可期 “科技+红利”双线布局",
+      "tags": ["CN", "equity"]
+    },
+    {
+      "firm": "UBS",
+      "analyst": "UBS Securities Asia",
+      "market": "CN",
+      "sector": "equity",
+      "target": "中国股票：维持超配；2026 年股本回报 7%–9%",
+      "view": "维持对中国股票的超配，预计 2026 年股本回报 7%–9%；2026 年 2 月认为再通胀潜力可带来约 20% 上行空间。",
+      "date": "2026-02-26",
+      "source": "https://www.bloomberg.com/news/articles/2026-02-26/ubs-sees-20-upside-for-china-stocks-on-reflationary-potential",
+      "source_title": "UBS Sees 20% Upside for China Stocks on Reflationary Potential",
+      "tags": ["CN", "equity"]
+    },
+    {
+      "firm": "华泰证券",
+      "analyst": "房地产研究团队",
+      "market": "CN",
+      "sector": "real_estate",
+      "target": "2026 年房地产：控增量、去库存、优供给；产品力穿越周期",
+      "view": "2026 年控增量、去库存、优供给政策将进一步落实，叠加潜在降准降息，助力市场企稳；供给侧持续优化，产品力或成为房企穿越周期的核心竞争力。中期策略主题为“重启与转型”。",
+      "date": "2025-12-25",
+      "source": "https://wap.eastmoney.com/a/202512253602209662.html",
+      "source_title": "产品力或将成为2026年房企穿越周期的核心竞争力之一",
+      "tags": ["CN", "real_estate"]
+    }
+  ]
+}
