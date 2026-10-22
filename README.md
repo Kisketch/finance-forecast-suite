@@ -6,10 +6,16 @@
 
 | 应用 | 文件 | 大小 | 说明 |
 |------|------|------|------|
-| **FinPredict** | [FinPredict_v1.3.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FinPredict_v1.3.exe) | 30 MB | 实时联网预判，双击即用，零环境依赖 |
-| **FIN_Terminal** | [FIN_Terminal_v0.4.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FIN_Terminal_v0.4.exe) | 29 MB | 离线多市场研究终端 |
+| **FinPredict** | [FinPredict_v1.3.exe](https://github.com/Kisketch/finance-forecast-suite/releases/download/v1.3/FinPredict_v1.3.exe) | 30 MB | 实时联网预判，双击即用，零环境依赖 |
+| **FIN_Terminal** | [FIN_Terminal_v0.4.exe](https://github.com/Kisketch/finance-forecast-suite/releases/download/v1.3/FIN_Terminal_v0.4.exe) | 29 MB | 离线多市场研究终端 |
 
 > Windows 可能提示"未知发布者"（未代码签名），选择"更多信息 → 仍要运行"即可。
+
+## 📊 准确率审计（先看这个）
+
+**方向准确率 98.7% 在样本外不可达**——本项目全程诚实审计并公开所有证据：1949 留出 58.8%、长样本 55.15%（未跑赢始终看多）、增强模型 56.53% 追平、有信号日 57.14% 超基准；**98.7% 真正可达的是区间覆盖率**（99.36%，但区间宽 15.6%）。
+
+→ 完整证据、界面实图与复现方法：**[AUDIT.md](AUDIT.md)**
 
 ## 目录结构
 
@@ -85,6 +91,12 @@ py -m pip install -r requirements.txt
 - FIN_Terminal 增强模型：56.53% 全程（追平始终看多），有信号日 57.14%（超基准）
 - FinPredict：54% 方向准确率（A 股日频），选择性输出在无把握时不下注
 - 所有预判作情景参考，**不构成买卖建议，不执行交易**
+
+## 📄 许可
+
+源码采用 **MIT License**（见 [LICENSE](LICENSE)）。授权范围**不含**第三方逆向证据（`project/reverse/`，仅本地留存）与市场数据（版权归腾讯/Yahoo/SEC EDGAR/交易所/央行原提供方）。
+
+研究教育用途。所有预判作情景参考，**不构成投资建议，不执行交易**。
 
 ## 快速开始
 

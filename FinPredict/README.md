@@ -12,8 +12,8 @@
 
 | 文件 | 大小 | 说明 |
 |------|------|------|
-| [FinPredict_v1.3.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FinPredict_v1.3.exe) | 30 MB | 独立版，双击即用，零环境依赖 |
-| [FIN_Terminal_v0.4.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FIN_Terminal_v0.4.exe) | 29 MB | 姊妹应用 FIN_Terminal（离线多市场终端） |
+| [FinPredict_v1.3.exe](https://github.com/Kisketch/finance-forecast-suite/releases/download/v1.3/FinPredict_v1.3.exe) | 30 MB | 独立版，双击即用，零环境依赖 |
+| [FIN_Terminal_v0.4.exe](https://github.com/Kisketch/finance-forecast-suite/releases/download/v1.3/FIN_Terminal_v0.4.exe) | 29 MB | 姊妹应用 FIN_Terminal（离线多市场终端） |
 
 > 下载后 Windows 可能提示"未知发布者"（未做代码签名），选择"更多信息 → 仍要运行"即可。
 
@@ -79,7 +79,7 @@ py -m PyInstaller finpredict.spec --noconfirm
 
 ## 📄 许可
 
-研究教育用途。数据版权归原始提供方（腾讯/yfinance），请遵守其条款。
+源码采用 **MIT License**（见 [LICENSE](../LICENSE)）。市场数据版权归原提供方（腾讯 / Yahoo），使用请遵守其条款。研究教育用途。
 
 ---
 
