@@ -2,6 +2,15 @@
 
 本文件夹包含**两个独立但互补**的金融分析预测桌面应用，均为研究教育用途，不构成投资建议。
 
+## ⬇️ 下载（Release v1.3）
+
+| 应用 | 文件 | 大小 | 说明 |
+|------|------|------|------|
+| **FinPredict** | [FinPredict_v1.3.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FinPredict_v1.3.exe) | 30 MB | 实时联网预判，双击即用，零环境依赖 |
+| **FIN_Terminal** | [FIN_Terminal_v0.4.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FIN_Terminal_v0.4.exe) | 29 MB | 离线多市场研究终端 |
+
+> Windows 可能提示"未知发布者"（未代码签名），选择"更多信息 → 仍要运行"即可。
+
 ## 目录结构
 
 ```

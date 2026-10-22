@@ -8,6 +8,15 @@
 
 ![实时行情界面](docs/screenshot_quote.png)
 
+## ⬇️ 下载（Release v1.3）
+
+| 文件 | 大小 | 说明 |
+|------|------|------|
+| [FinPredict_v1.3.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FinPredict_v1.3.exe) | 30 MB | 独立版，双击即用，零环境依赖 |
+| [FIN_Terminal_v0.4.exe](https://github.com/Kisketch/finpredict-suite/releases/download/v1.3/FIN_Terminal_v0.4.exe) | 29 MB | 姊妹应用 FIN_Terminal（离线多市场终端） |
+
+> 下载后 Windows 可能提示"未知发布者"（未做代码签名），选择"更多信息 → 仍要运行"即可。
+
 ## ✨ 核心功能
 
 | 页面 | 能力 |
