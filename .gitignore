@@ -1,0 +1,33 @@
+# ===== 构建中间产物与 dist（最终 exe 统一放 releases/）=====
+build/
+build_enh/
+build_fix/
+build_icon/
+dist/
+dist_fix/
+dist_enh/
+dist_icon/
+__pycache__/
+*.pyc
+*.pyo
+
+# ===== 大数据文件（可由 app 实时重新拉取 / 需官方授权）=====
+project/data/processed/
+project/data/raw/
+project/data/news/news.db
+project/data/cache/
+
+# ===== 逆向证据（419MB，仅本地保留）=====
+project/reverse/
+
+# ===== 旧版 exe（仅保留最终带图标版 dist_icon）=====
+FinPredict/dist_fix/
+FinPredict/dist_enh/
+
+# ===== 系统文件 =====
+Thumbs.db
+.DS_Store
+*.log
+temp/
+.wind-alice/
+releases/
