@@ -1,0 +1,115 @@
+{
+  "holdout_1949": {
+    "symbol": "^GSPC",
+    "horizon": 1,
+    "train_end": "1948-12-31",
+    "test_year": 1949,
+    "n_train": 5242,
+    "n_test": 250,
+    "overall_acc": 0.576,
+    "signal_acc": 1.0,
+    "signal_coverage": 0.008,
+    "n_signal": 2,
+    "baseline_long": 0.496,
+    "baseline_reference": {
+      "1949_best_hgb_clf": 0.588,
+      "always_long_1949": 0.496
+    },
+    "elapsed_seconds": 7.1
+  },
+  "modern_2000_2026": {
+    "symbol": "^GSPC",
+    "horizon": 5,
+    "start_year": 2000,
+    "end_year": 2026,
+    "summary": {
+      "n": 1362,
+      "overall_acc": 0.5653450807635829,
+      "baseline_long": 0.566813509544787,
+      "signal_acc": 0.5714285714285714,
+      "signal_coverage": 0.5139500734214391,
+      "n_signal": 700,
+      "by_decade": {
+        "2000": {
+          "n": 509,
+          "overall_acc": 0.5225933202357563,
+          "baseline_long": 0.5284872298624754,
+          "signal_acc": 0.5224489795918368,
+          "signal_coverage": 0.481335952848723
+        },
+        "2010": {
+          "n": 509,
+          "overall_acc": 0.6129666011787819,
+          "baseline_long": 0.6070726915520629,
+          "signal_acc": 0.6687116564417178,
+          "signal_coverage": 0.32023575638506874
+        },
+        "2020": {
+          "n": 344,
+          "overall_acc": 0.5581395348837209,
+          "baseline_long": 0.563953488372093,
+          "signal_acc": 0.5582191780821918,
+          "signal_coverage": 0.8488372093023255
+        }
+      },
+      "method": "enhanced features + isotonic-calibrated ensemble (logit+HistGBM+ExtraTrees) + time decay + selective output"
+    },
+    "confidence_curve": [
+      {
+        "threshold": 0.0,
+        "coverage": 1.0,
+        "n": 1362,
+        "accuracy": 0.5653450807635829
+      },
+      {
+        "threshold": 0.02,
+        "coverage": 0.8847283406754772,
+        "n": 1205,
+        "accuracy": 0.5643153526970954
+      },
+      {
+        "threshold": 0.05,
+        "coverage": 0.5139500734214391,
+        "n": 700,
+        "accuracy": 0.5714285714285714
+      },
+      {
+        "threshold": 0.08,
+        "coverage": 0.16813509544787078,
+        "n": 229,
+        "accuracy": 0.5502183406113537
+      },
+      {
+        "threshold": 0.12,
+        "coverage": 0.032305433186490456,
+        "n": 44,
+        "accuracy": 0.45454545454545453
+      },
+      {
+        "threshold": 0.15,
+        "coverage": 0.006607929515418502,
+        "n": 9,
+        "accuracy": 0.4444444444444444
+      },
+      {
+        "threshold": 0.2,
+        "coverage": 0.0,
+        "n": 0,
+        "accuracy": null
+      },
+      {
+        "threshold": 0.25,
+        "coverage": 0.0,
+        "n": 0,
+        "accuracy": null
+      },
+      {
+        "threshold": 0.3,
+        "coverage": 0.0,
+        "n": 0,
+        "accuracy": null
+      }
+    ],
+    "elapsed_seconds": 203.8
+  }
+}
