@@ -1,0 +1,122 @@
+# 金融分析预测 App — 资产宇宙配置
+# 说明：symbol 采用 Yahoo Finance 代码；name_cn 为中文名；group 为板块；market 为市场。
+# 数据最早可追溯到各标的上市日；period=max 拉取全部历史。
+
+markets:
+  us:
+    indices:
+      - {symbol: "^GSPC", name_cn: "标普500", name_en: "S&P 500"}
+      - {symbol: "^IXIC", name_cn: "纳斯达克综合", name_en: "Nasdaq Composite"}
+      - {symbol: "^DJI", name_cn: "道琼斯工业", name_en: "Dow Jones Industrial"}
+      - {symbol: "^RUT", name_cn: "罗素2000", name_en: "Russell 2000"}
+      - {symbol: "^VIX", name_cn: "VIX波动率", name_en: "CBOE VIX"}
+      - {symbol: "^TNX", name_cn: "美债10年收益率", name_en: "US 10Y Yield"}
+      - {symbol: "DX-Y.NYB", name_cn: "美元指数", name_en: "DXY"}
+  hk:
+    indices:
+      - {symbol: "^HSI", name_cn: "恒生指数", name_en: "Hang Seng"}
+      - {symbol: "^HSCE", name_cn: "恒生国企", name_en: "HSCEI"}
+      - {symbol: "^HSTECH", name_cn: "恒生科技", name_en: "Hang Seng Tech"}
+  cn:
+    indices:
+      - {symbol: "000001.SS", name_cn: "上证指数", name_en: "SSE Composite"}
+      - {symbol: "399001.SZ", name_cn: "深证成指", name_en: "SZSE Component"}
+      - {symbol: "399006.SZ", name_cn: "创业板指", name_en: "ChiNext"}
+      - {symbol: "000300.SS", name_cn: "沪深300", name_en: "CSI 300"}
+      - {symbol: "000688.SS", name_cn: "科创50", name_en: "STAR 50"}
+
+sector_etfs:
+  real_estate:
+    - {symbol: "XLRE", name_cn: "美国房地产ETF", name_en: "Real Estate Select Sector SPDR"}
+    - {symbol: "VNQ", name_cn: "美国REITs ETF", name_en: "Vanguard Real Estate ETF"}
+  energy:
+    - {symbol: "XLE", name_cn: "美国能源ETF", name_en: "Energy Select Sector SPDR"}
+    - {symbol: "XOP", name_cn: "油气勘探生产ETF", name_en: "SPDR S&P Oil & Gas E&P"}
+    - {symbol: "ICLN", name_cn: "全球清洁能源ETF", name_en: "iShares Global Clean Energy"}
+    - {symbol: "TAN", name_cn: "太阳能ETF", name_en: "Invesco Solar ETF"}
+    - {symbol: "XLU", name_cn: "公用事业ETF", name_en: "Utilities Select Sector SPDR"}
+  broad_sectors:
+    - {symbol: "XLK", name_cn: "科技", name_en: "Technology"}
+    - {symbol: "XLF", name_cn: "金融", name_en: "Financials"}
+    - {symbol: "XLV", name_cn: "医疗", name_en: "Health Care"}
+    - {symbol: "XLY", name_cn: "可选消费", name_en: "Consumer Discretionary"}
+    - {symbol: "XLP", name_cn: "必需消费", name_en: "Consumer Staples"}
+    - {symbol: "XLI", name_cn: "工业", name_en: "Industrials"}
+    - {symbol: "XLB", name_cn: "原材料", name_en: "Materials"}
+    - {symbol: "XLC", name_cn: "通信服务", name_en: "Communication Services"}
+
+stocks:
+  us_real_estate:
+    - {symbol: "PLD", name_cn: "安博", name_en: "Prologis"}
+    - {symbol: "SPG", name_cn: "西蒙地产", name_en: "Simon Property"}
+    - {symbol: "O", name_cn: "Realty Income", name_en: "Realty Income"}
+    - {symbol: "DLR", name_cn: "数字房地产", name_en: "Digital Realty"}
+    - {symbol: "PSA", name_cn: "公共存储", name_en: "Public Storage"}
+    - {symbol: "EQIX", name_cn: "Equinix", name_en: "Equinix"}
+    - {symbol: "AVB", name_cn: "AvalonBay", name_en: "AvalonBay Communities"}
+    - {symbol: "EQR", name_cn: "Equity Residential", name_en: "Equity Residential"}
+  us_energy:
+    - {symbol: "XOM", name_cn: "埃克森美孚", name_en: "Exxon Mobil"}
+    - {symbol: "CVX", name_cn: "雪佛龙", name_en: "Chevron"}
+    - {symbol: "COP", name_cn: "康菲石油", name_en: "ConocoPhillips"}
+    - {symbol: "EOG", name_cn: "EOG能源", name_en: "EOG Resources"}
+    - {symbol: "SLB", name_cn: "斯伦贝谢", name_en: "SLB"}
+    - {symbol: "OXY", name_cn: "西方石油", name_en: "Occidental Petroleum"}
+    - {symbol: "MPC", name_cn: "马拉松石油", name_en: "Marathon Petroleum"}
+    - {symbol: "VLO", name_cn: "瓦莱罗能源", name_en: "Valero Energy"}
+    - {symbol: "KMI", name_cn: "金德摩根", name_en: "Kinder Morgan"}
+    - {symbol: "LNG", name_cn: "Cheniere Energy", name_en: "Cheniere Energy"}
+  us_tech_fin:
+    - {symbol: "AAPL", name_cn: "苹果", name_en: "Apple"}
+    - {symbol: "MSFT", name_cn: "微软", name_en: "Microsoft"}
+    - {symbol: "NVDA", name_cn: "英伟达", name_en: "NVIDIA"}
+    - {symbol: "GOOGL", name_cn: "谷歌", name_en: "Alphabet"}
+    - {symbol: "AMZN", name_cn: "亚马逊", name_en: "Amazon"}
+    - {symbol: "META", name_cn: "Meta", name_en: "Meta Platforms"}
+    - {symbol: "JPM", name_cn: "摩根大通", name_en: "JPMorgan Chase"}
+    - {symbol: "GS", name_cn: "高盛", name_en: "Goldman Sachs"}
+    - {symbol: "MS", name_cn: "摩根士丹利", name_en: "Morgan Stanley"}
+    - {symbol: "BRK-B", name_cn: "伯克希尔", name_en: "Berkshire Hathaway B"}
+  hk:
+    - {symbol: "0700.HK", name_cn: "腾讯控股", name_en: "Tencent"}
+    - {symbol: "9988.HK", name_cn: "阿里巴巴", name_en: "Alibaba"}
+    - {symbol: "3690.HK", name_cn: "美团", name_en: "Meituan"}
+    - {symbol: "0941.HK", name_cn: "中国移动", name_en: "China Mobile"}
+    - {symbol: "0388.HK", name_cn: "香港交易所", name_en: "HKEX"}
+    - {symbol: "0005.HK", name_cn: "汇丰控股", name_en: "HSBC"}
+    - {symbol: "1299.HK", name_cn: "友邦保险", name_en: "AIA"}
+    - {symbol: "2318.HK", name_cn: "中国平安", name_en: "Ping An"}
+    - {symbol: "0016.HK", name_cn: "新鸿基地产", name_en: "Sun Hung Kai Properties"}
+    - {symbol: "0823.HK", name_cn: "领展房产基金", name_en: "Link REIT"}
+    - {symbol: "0688.HK", name_cn: "中国海外发展", name_en: "China Overseas Land"}
+    - {symbol: "1109.HK", name_cn: "华润置地", name_en: "China Resources Land"}
+    - {symbol: "0883.HK", name_cn: "中国海洋石油", name_en: "CNOOC"}
+    - {symbol: "0386.HK", name_cn: "中国石油化工", name_en: "Sinopec"}
+    - {symbol: "0857.HK", name_cn: "中国石油", name_en: "PetroChina"}
+    - {symbol: "1088.HK", name_cn: "中国神华", name_en: "China Shenhua"}
+    - {symbol: "1898.HK", name_cn: "中煤能源", name_en: "China Coal"}
+  cn:
+    - {symbol: "600519.SS", name_cn: "贵州茅台", name_en: "Kweichow Moutai"}
+    - {symbol: "601318.SS", name_cn: "中国平安", name_en: "Ping An"}
+    - {symbol: "600036.SS", name_cn: "招商银行", name_en: "China Merchants Bank"}
+    - {symbol: "601398.SS", name_cn: "工商银行", name_en: "ICBC"}
+    - {symbol: "600030.SS", name_cn: "中信证券", name_en: "CITIC Securities"}
+    - {symbol: "000002.SZ", name_cn: "万科A", name_en: "Vanke"}
+    - {symbol: "600048.SS", name_cn: "保利发展", name_en: "Poly Developments"}
+    - {symbol: "001979.SZ", name_cn: "招商蛇口", name_en: "China Merchants Shekou"}
+    - {symbol: "601857.SS", name_cn: "中国石油", name_en: "PetroChina"}
+    - {symbol: "600028.SS", name_cn: "中国石化", name_en: "Sinopec"}
+    - {symbol: "601088.SS", name_cn: "中国神华", name_en: "China Shenhua"}
+    - {symbol: "600900.SS", name_cn: "长江电力", name_en: "China Yangtze Power"}
+    - {symbol: "300750.SZ", name_cn: "宁德时代", name_en: "CATL"}
+    - {symbol: "002594.SZ", name_cn: "比亚迪", name_en: "BYD"}
+    - {symbol: "601012.SS", name_cn: "隆基绿能", name_en: "LONGi Green Energy"}
+    - {symbol: "000858.SZ", name_cn: "五粮液", name_en: "Wuliangye"}
+
+commodities:
+  - {symbol: "CL=F", name_cn: "WTI原油", name_en: "WTI Crude"}
+  - {symbol: "BZ=F", name_cn: "布伦特原油", name_en: "Brent Crude"}
+  - {symbol: "NG=F", name_cn: "天然气", name_en: "Natural Gas"}
+  - {symbol: "GC=F", name_cn: "黄金", name_en: "Gold"}
+  - {symbol: "SI=F", name_cn: "白银", name_en: "Silver"}
+  - {symbol: "HG=F", name_cn: "铜", name_en: "Copper"}
