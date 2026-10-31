@@ -4,6 +4,30 @@
 
 ---
 
+## [0.5] — 2026-10-31 · FIN_Terminal 新闻层算法升级
+
+### Added
+- **同簇证据收益递减**：文本 Jaccard 去重之外，(event_type, region) 相同的第 n 条证据权重 ×0.5^(n-1)——抑制"同一事实被多源/多人分别报道"造成的证据总量（coverage）虚增与新闻层超配，相关证据次线性累积（`impact._cluster_decay`）
+- **数据驱动融合尺度**：scale 优先用 horizon 期已实现波动率 σ_h（"score=1 的强新闻 ≈ 1 个 horizon 标准差"），替代手拍常数表（原表本身近似 1.2%×√T 的粗版）；极端值钳制 [0.006, 0.08]，数据缺失自动回退常数表（`impact._horizon_vol_scale`）
+- **波动率 regime 乘子**：20 日已实现波动率在过去一年中的分位 <25% → ×1.15（低波动期价格信号弱、新闻相对信息价值高），>75% → ×0.85（噪音大）；`regime_mult` 可配置先验（`impact._vol_regime`）
+- **LLM confidence 在线校准**：原始 confidence 不再直接进权重乘法链，先按 lo/mid/hi 分桶经前向命中率校准（Beta(2,2) 先验平滑），乘子钳制 [0.3, 1.5]，无校准表时恒等回退（`impact.calibrated_confidence` + optimizer 校准表更新）
+- **逆 MSE 权重更新**（Granger–Ramanathan 两分量特例）：已实现样本 ≥30 时 `w_target = 0.05 + 0.30 × mae_price/(mae_price+mae_news)`——news 与 price 同精度 → 0.20，news 完美 → 趋 0.35 上限，无技能 → 趋 0.05 下限；样本少回退原方向命中差规则，实际启用哪条规则透明记录进审计历史
+- **增量技能统计**：`performance` 新增 news 相对 price 的**配对方向命中差 + 95% CI**（正态近似，n≥30 且 CI 不含 0 才标显著），以及 combined 残差 q05/q95 **轻量共形区间**（n≥20）——正面回答"新闻层是否比价格先验多知道什么"
+- **回归测试** [project/scripts/test_news_upgrades.py](project/scripts/test_news_upgrades.py)：24 项断言，无网络、无真实数据依赖，可离线复跑
+
+### Fixed
+- **apply_proposal 重复定义导致频控失效**：`optimizer.py` 中该函数被定义两次，后一个（无频控）覆盖了前一个（带 10 分钟频控）——反复应用 LLM 提议可逐步把权重推至硬边界；已删除重复定义，频控恢复并有回归断言
+- **逆 MSE 边界**：price 模型完美（mae_price=0）时条件写错误回退 hit-diff 规则，现正确给出 w 向 0.05 下限步进
+
+### Compatibility
+- 旧权重文件（v0.4 及以前）自动合并新键默认值（`cluster_decay` / `scale_vol_mult` / `regime_mult` / `confidence_calibration`），行为向后兼容；所有新逻辑带数据缺失回退路径，缺数据时与 v0.4 行为一致
+
+### Verification
+- `py scripts/test_news_upgrades.py`（24 项）、`test_news_pipeline.py`、`test_news_core.py` 全部通过；全仓 57 个 .py 文件编译通过
+- 活服务实测：`/api/news/impact`、`/api/news/performance`、`/api/optimizer/status`、`/api/news/sources` 结构正确，四个新权重键正确暴露，服务日志无异常
+
+---
+
 ## [1.3] — 2026-10-22 · 合并套件 / 图标 / 五语文档 / Git 研发流程
 
 ### Added

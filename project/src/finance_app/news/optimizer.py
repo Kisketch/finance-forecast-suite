@@ -14,7 +14,7 @@ from typing import Iterable
 
 import pandas as pd
 
-from .impact import DEFAULT_WEIGHTS, load_weights, save_weights
+from .impact import DEFAULT_WEIGHTS, HORIZON_SCALE, conf_bucket, load_weights, save_weights
 from .llm import LLMClient
 from .store import NewsStore
 
@@ -100,10 +100,43 @@ def performance(store: NewsStore) -> dict:
         b["hit_combined"] = round(b["hit_combined"] / b["n_c"], 4) if b["n_c"] else 0.0
         b["hit_price"] = round(b["hit_price"] / b["n_p"], 4) if b["n_p"] else 0.0
         b["hit_news"] = round(b["hit_news"] / b["n_n"], 4) if b["n_n"] else 0.0
+
+    # 增量技能（配对检验）：同一预测行上 news/price 方向命中的逐行差，
+    # 正态近似 95% CI——回答"新闻层是否比价格先验多知道什么"，而非只看两个边缘命中率。
+    paired = [r for r in rows
+              if _hit_valid(r.get("news_score"), r.get("actual_logret"))
+              and _hit_valid(r.get("price_logret"), r.get("actual_logret"))]
+    if paired:
+        d = [int(_hit(r["news_score"], r["actual_logret"])) - int(_hit(r["price_logret"], r["actual_logret"]))
+             for r in paired]
+        n_d = len(d)
+        mean_d = sum(d) / n_d
+        var_d = sum((x - mean_d) ** 2 for x in d) / max(1, n_d - 1)
+        se_d = math.sqrt(var_d / n_d) if n_d > 1 else 0.0
+        lo, hi = mean_d - 1.96 * se_d, mean_d + 1.96 * se_d
+        incremental_skill = {"n": n_d, "mean_diff": round(mean_d, 4),
+                             "ci95": [round(lo, 4), round(hi, 4)],
+                             "significant": bool(n_d >= 30 and (lo > 0 or hi < 0)),
+                             "note": "news 相对 price 的方向命中差；CI 不含 0 且 n>=30 才算显著"}
+    else:
+        incremental_skill = {"n": 0}
+
+    # 轻量共形区间：combined 残差的经验分位（split-conformal 简化版）。
+    # 样本 >=20 才给出，否则 None——诚实输出"样本不够，区间不可信"。
+    residuals = sorted(float(r["actual_logret"]) - float(r["combined_logret"]) for r in rows)
+    if len(residuals) >= 20:
+        def _q(p: float) -> float:
+            i = min(len(residuals) - 1, max(0, int(round(p * (len(residuals) - 1)))))
+            return round(residuals[i], 6)
+        residual_interval = {"q05": _q(0.05), "q95": _q(0.95), "n": len(residuals)}
+    else:
+        residual_interval = None
+
     return {
         "n": len(rows), "hit_combined": round(hit_c, 4), "hit_price": round(hit_p, 4),
         "hit_news": round(hit_n, 4), "mae_combined": round(mae_c, 5),
         "mae_price": round(mae_p, 5), "brier_news": round(brier_n, 4),
+        "incremental_skill": incremental_skill, "residual_interval": residual_interval,
         "by_region": by_region, "last": rows[0].get("evaluated_at"),
         "recent": [{
             "id": r.get("id"), "symbol": r.get("symbol"), "region": r.get("region"),
@@ -136,13 +169,37 @@ def update_weights(store: NewsStore, data_store, min_samples: int = 20) -> dict:
     changes = []
     overall_news = float(perf["hit_news"])
     overall_price = float(perf["hit_price"])
-    delta = _clip((overall_news - overall_price) * 0.5, -0.05, 0.05)
     old_w = float(weights.get("news_weight", 0.15))
+    # news_weight 更新规则（二选一，透明记录用哪条）：
+    # 1) 逆 MSE（Granger–Ramanathan 两分量特例，已实现样本>=30）：把 news_score 按
+    #    HORIZON_SCALE 换算到 logret 尺度后与 price 比精度，
+    #    w_target = 0.05 + 0.30 * mae_price / (mae_price + mae_news)——
+    #    news 与 price 同精度时 w=0.20，news 完美时趋 0.35，news 无技能时趋 0.05；
+    # 2) 方向命中差（样本少的回退）：沿用原 hit_news - hit_price 规则。
+    usable = [r for r in store.evaluated_predictions(limit=1000)
+              if r.get("actual_logret") is not None and r.get("news_score") is not None
+              and r.get("price_logret") is not None]
+    mae_news = mae_price_full = None
+    if len(usable) >= 30:
+        try:
+            mae_news = sum(abs(float(r["news_score"]) * HORIZON_SCALE.get(int(r.get("horizon") or 5), 0.025)
+                               - float(r["actual_logret"])) for r in usable) / len(usable)
+            mae_price_full = sum(abs(float(r["price_logret"]) - float(r["actual_logret"]))
+                                 for r in usable) / len(usable)
+        except (TypeError, ValueError):
+            mae_news = mae_price_full = None
+    if mae_news is not None and mae_price_full is not None and (mae_news + mae_price_full) > 1e-12:
+        w_target = 0.05 + 0.30 * (mae_price_full / (mae_price_full + mae_news))
+        delta = _clip(0.5 * (w_target - old_w), -0.05, 0.05)
+        rule = f"inverse_mse(mae_news={mae_news:.5f}, mae_price={mae_price_full:.5f}, n={len(usable)})"
+    else:
+        delta = _clip((overall_news - overall_price) * 0.5, -0.05, 0.05)
+        rule = f"hit_diff(news_hit={overall_news:.3f}, price_hit={overall_price:.3f})"
     new_w = _clip(old_w + delta, 0.05, 0.35)
     if abs(new_w - old_w) > 1e-6:
         weights["news_weight"] = round(new_w, 4)
         changes.append({"target": "news_weight", "before": round(old_w, 4), "after": round(new_w, 4),
-                        "reason": f"news_hit={overall_news:.3f}, price_hit={overall_price:.3f}"})
+                        "reason": rule})
     for region, b in (perf.get("by_region") or {}).items():
         if b["n"] < max(8, min_samples // 3):
             continue
@@ -157,18 +214,29 @@ def update_weights(store: NewsStore, data_store, min_samples: int = 20) -> dict:
                             "reason": f"n={b['n']}, news_hit={b['hit_news']:.3f}"})
 
     # 领域/事件类型权重：只统计预测时引用过的事件类别，样本 >=8 才更新。
+    # 同一遍扫描顺带收集 LLM confidence 分桶统计，供在线校准使用。
     cat_stats: dict[str, dict] = {}
+    conf_stats: dict[str, dict] = {}
     for r in store.evaluated_predictions(limit=1000):
         cats = set()
+        hit_news = (r.get("news_score", 0) > 0) == (r.get("actual_logret", 0) > 0)
         for nid in r.get("news_ids") or []:
             item = store.get(nid)
             a = (item or {}).get("analysis") or {}
             if a.get("event_type"):
                 cats.add(a["event_type"])
+            try:
+                conf = max(0.0, min(1.0, float(a.get("confidence"))))
+            except (TypeError, ValueError):
+                continue
+            cb = conf_stats.setdefault(conf_bucket(conf), {"n": 0, "hit": 0, "conf_sum": 0.0})
+            cb["n"] += 1
+            cb["hit"] += int(hit_news)
+            cb["conf_sum"] += conf
         for cat in cats:
             b = cat_stats.setdefault(cat, {"n": 0, "hit": 0})
             b["n"] += 1
-            b["hit"] += int((r.get("news_score", 0) > 0) == (r.get("actual_logret", 0) > 0))
+            b["hit"] += int(hit_news)
     for cat, b in cat_stats.items():
         if b["n"] < 8:
             continue
@@ -182,6 +250,26 @@ def update_weights(store: NewsStore, data_store, min_samples: int = 20) -> dict:
             weights["category_learned"] = learned
             changes.append({"target": f"category:{cat}", "before": round(old, 4), "after": round(new, 4),
                             "reason": f"n={b['n']}, news_hit={hit:.3f}"})
+
+    # LLM confidence 在线校准：每桶用前向命中率估计"实际可信度"，
+    # 乘子 = 校准命中率 / 桶平均原始置信度（Beta(2,2) 先验平滑，n<5 的桶不动，
+    # 乘子钳制 [0.3, 1.5]）。combined 方向命中混有聚合噪声，这是一阶近似校准，
+    # 不是严格的可靠性图（reliability diagram）拟合。
+    old_cal = dict(((weights.get("confidence_calibration") or {}).get("mult")) or {})
+    new_cal: dict[str, float] = {}
+    cal_n: dict[str, int] = {}
+    for bucket, cb in conf_stats.items():
+        rate = (cb["hit"] + 2) / (cb["n"] + 4)
+        mean_conf = cb["conf_sum"] / max(1, cb["n"])
+        mult = _clip(rate / max(0.1, mean_conf), 0.3, 1.5)
+        if cb["n"] >= 5:
+            new_cal[bucket] = round(mult, 4)
+            cal_n[bucket] = cb["n"]
+    if new_cal and new_cal != old_cal:
+        weights["confidence_calibration"] = {"mult": new_cal, "n": cal_n,
+                                             "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+        changes.append({"target": "confidence_calibration", "before": old_cal, "after": new_cal,
+                        "reason": f"buckets={ {k: cal_n[k] for k in new_cal} }"})
     if changes:
         weights.setdefault("history", []).append({
             "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -256,32 +344,3 @@ def llm_proposal(client: LLMClient, store: NewsStore) -> dict:
                  "energy", "real_estate", "labor", "earnings", "other"):
             proposal["category_learned"][c] = _clip(v, 0.6, 1.4)
     return proposal
-
-
-def apply_proposal(store: NewsStore, proposal: dict) -> dict:
-    weights = load_weights()
-    before = {"news_weight": weights.get("news_weight"),
-              "region_learned": dict(weights.get("region_learned") or {})}
-    old_w = float(weights.get("news_weight", 0.15))
-    new_w = _clip(proposal.get("news_weight", old_w), max(0.05, old_w - 0.05), min(0.35, old_w + 0.05))
-    weights["news_weight"] = round(new_w, 4)
-    reg = dict(weights.get("region_learned") or {})
-    for r, v in (proposal.get("region_learned") or {}).items():
-        old = float(reg.get(r, 1.0))
-        reg[r] = round(_clip(v, max(0.5, old * 0.92), min(1.5, old * 1.08)), 4)
-    weights["region_learned"] = reg
-    cat = dict(weights.get("category_learned") or {})
-    for c, v in (proposal.get("category_learned") or {}).items():
-        old = float(cat.get(c, 1.0))
-        cat[c] = round(_clip(v, max(0.6, old * 0.92), min(1.4, old * 1.08)), 4)
-    weights["category_learned"] = cat
-    weights.setdefault("history", []).append({
-        "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "type": "llm_proposal_applied", "proposal": proposal,
-        "before": before, "after": {"news_weight": weights["news_weight"], "region_learned": reg,
-                                     "category_learned": cat},
-    })
-    save_weights(weights)
-    return {"applied": True, "before": before,
-            "after": {"news_weight": weights["news_weight"], "region_learned": reg,
-                      "category_learned": cat}}

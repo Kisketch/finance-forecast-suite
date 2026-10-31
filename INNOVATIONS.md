@@ -29,3 +29,21 @@
 
 10. **Reproducible packaging.**
     Every report, raw dataset, script, and evidence file is preserved, with a file index, manifest, version snapshots, and an auditable decision log.
+
+11. **Sublinear accumulation of correlated evidence.** *(v0.5)*
+    Title-level Jaccard dedup only removes near-duplicates; distinct texts reporting the same fact (e.g., three officials commenting on one rate decision) still inflate Σw and over-trust the news layer. Events sharing (event_type, region) get weight ×0.5^(n-1) by descending rank — correlated evidence accrues sublinearly instead of being double-counted.
+
+12. **Data-driven link function for the fusion scale.** *(v0.5)*
+    The news-score→log-return scale is no longer a hand-picked constant table: it uses the realized volatility of the forecast horizon (scale ≈ σ_h, i.e. "a score-1 event ≈ one horizon standard deviation"), clamped to [0.006, 0.08], with the constant table (≈1.2%×√T) kept only as a fallback.
+
+13. **Volatility-regime conditioning.** *(v0.5)*
+    The 20-day realized-vol percentile over the past year conditions a news multiplier (low-vol ×1.15, high-vol ×0.85, configurable): news carries relatively more information when the price signal is quiet, and is discounted when noise dominates.
+
+14. **Online calibration of LLM confidence.** *(v0.5)*
+    Raw LLM confidence enters the multiplicative evidence weight only after bucket-wise calibration (lo/mid/hi) against forward hit rates with a Beta(2,2) prior; multipliers are clamped to [0.3, 1.5] and fall back to identity when unestimated — the least reliable number in the chain no longer sits unchecked at its core.
+
+15. **Inverse-MSE weight updates with an abstention floor.** *(v0.5)*
+    Once ≥30 realized shadow predictions exist, news_weight targets 0.05 + 0.30 × mae_price/(mae_price+mae_news) — a two-component Granger–Ramanathan special case: equally accurate → 0.20, perfect news → the 0.35 cap, no skill → the 0.05 floor. Below 30 samples the original directional-hit rule applies; the active rule is recorded in the audit history.
+
+16. **Incremental-skill reporting instead of marginal hit rates.** *(v0.5)*
+    performance() reports the paired per-row directional hit difference (news vs price) with a 95% CI, flagging significance only at n≥30 with the interval excluding zero, plus a q05/q95 empirical (split-conformal style) residual interval for combined predictions at n≥20 — directly answering "does the news layer know more than the price prior?" rather than implying it from two marginal rates.

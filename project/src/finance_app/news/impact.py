@@ -35,6 +35,18 @@ DEFAULT_WEIGHTS = {
     "region": {"US": 1.0, "HK": 1.0, "CN": 1.0, "EU": 0.9, "UK": 0.9, "JP": 0.9, "GLOBAL": 0.8},
     "category_learned": {},
     "region_learned": {},
+    # 同簇事件收益递减系数：(event_type, region) 相同的第 n 条证据权重 ×decay^(n-1)，
+    # 抑制"同一事实多源报道"造成的证据总量虚增（相关性感知的证据记账）。
+    "cluster_decay": 0.5,
+    # 融合尺度乘子：scale = clip(σ_horizon × scale_vol_mult, 0.006, 0.08)。
+    # σ_horizon 为 horizon 期已实现波动率，替代手拍常数（数据驱动的 link function）。
+    "scale_vol_mult": 1.0,
+    # 波动率 regime 乘子：低波动期价格信号弱、新闻相对信息价值高（>1）；
+    # 高波动期新闻隐含幅度噪音大（<1）。可配置先验，不宣称最优。
+    "regime_mult": {"low": 1.15, "mid": 1.0, "high": 0.85},
+    # LLM confidence 在线校准表：{"mult": {桶: 乘子}, "n": {桶: 样本数}}，
+    # 由 optimizer.update_weights 用前向影子命中率估计（Beta 平滑）。
+    "confidence_calibration": {},
     "history": [],
     "updated_at": None,
 }
@@ -130,6 +142,98 @@ def _dedupe_events(items: list[dict]) -> list[dict]:
     return kept
 
 
+def conf_bucket(conf: float) -> str:
+    """LLM confidence 的分桶：<0.4 / <0.7 / >=0.7。"""
+    if conf < 0.4:
+        return "lo"
+    if conf < 0.7:
+        return "mid"
+    return "hi"
+
+
+def calibrated_confidence(raw_conf: float, weights: dict) -> float:
+    """LLM confidence 的在线校准：按前向命中率对原始值打折/放大。
+
+    校准乘子由 optimizer.update_weights 用前向影子样本估计（Beta 平滑），
+    存 weights["confidence_calibration"]["mult"]；无表或对应桶缺样本时恒等返回，
+    行为与未校准版本一致。乘子本身被钳制在 [0.3, 1.5]，防止校准表反向放大。"""
+    try:
+        conf = max(0.0, min(1.0, float(raw_conf)))
+    except (TypeError, ValueError):
+        return 0.0
+    table = (weights.get("confidence_calibration") or {}).get("mult") or {}
+    if not table:
+        return conf
+    try:
+        mult = max(0.3, min(1.5, float(table.get(conf_bucket(conf), 1.0))))
+    except (TypeError, ValueError):
+        mult = 1.0
+    return max(0.0, min(1.0, conf * mult))
+
+
+def _cluster_decay(enriched: list[dict], decay: float) -> None:
+    """同簇事件收益递减：(event_type, region) 相同的多条事件视为语义相关证据。
+
+    文本 Jaccard 去重只消除近似重复；"同一事实被多源/多人分别报道"仍会被
+    当作独立证据，虚增 Σw（coverage）→ 新闻层超配。这里把同簇第 n 条
+    （按权重降序）权重乘 decay^(n-1)，等价于对相关证据做次线性累积。"""
+    if not (0.0 < float(decay) < 1.0) or len(enriched) < 2:
+        return
+    clusters: dict[tuple[str, str], int] = {}
+    for item in enriched:  # _dedupe_events 已按 weight 降序
+        a = item.get("analysis") or {}
+        key = (str(a.get("event_type") or "other"), str(item.get("region") or "GLOBAL"))
+        n = clusters.get(key, 0) + 1
+        clusters[key] = n
+        if n > 1:
+            f = float(decay) ** (n - 1)
+            item["weight"] = round(item["weight"] * f, 5)
+            item["signed"] = round(item["signed"] * f, 5)
+            item["cluster_rank"] = n
+
+
+def _horizon_vol_scale(data_store, symbol: str, horizon: int) -> float | None:
+    """horizon 期已实现波动率：近一年日对数收益 std × √h（交易日）。
+
+    作为融合层 link function 的数据驱动尺度——"score=1 的强新闻 ≈ 1 个
+    horizon 标准差"；任何异常回退 None → 常数表（fail-open 到旧行为）。"""
+    try:
+        import numpy as np
+        df = data_store.get(symbol)
+        if df is None or len(df) < 60:
+            return None
+        lr = np.log(df["close"].astype(float)).diff().dropna().iloc[-250:]
+        if len(lr) < 60:
+            return None
+        s = float(lr.std())
+        if not math.isfinite(s) or s <= 0:
+            return None
+        return s * math.sqrt(max(1, int(horizon)))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _vol_regime(data_store, symbol: str) -> str:
+    """当前 20 日已实现波动率在过去一年分布中的分位 → low/mid/high。
+
+    分位 <25% 为 low（价格信号弱、新闻乘子上调）；>75% 为 high（噪音大、下调）。
+    数据不足回退 "mid"，与旧版行为一致。"""
+    try:
+        import numpy as np
+        import pandas as pd
+        df = data_store.get(symbol)
+        if df is None or len(df) < 120:
+            return "mid"
+        lr = pd.Series(np.log(df["close"].astype(float))).diff().dropna()
+        v20 = lr.rolling(20).std().dropna().iloc[-250:]
+        if len(v20) < 60:
+            return "mid"
+        q = float((v20 <= float(v20.iloc[-1])).mean())
+        return "low" if q < 0.25 else ("high" if q > 0.75 else "mid")
+    except Exception:  # noqa: BLE001
+        return "mid"
+
+
 def score_news(store: NewsStore, hours: int = 48, limit: int = 400) -> dict:
     weights = load_weights()
     items = store.list(analyzed=True, hours=hours, limit=limit)
@@ -148,7 +252,8 @@ def score_news(store: NewsStore, hours: int = 48, limit: int = 400) -> dict:
         cat_l = (weights.get("category_learned") or {}).get(a.get("event_type"), 1.0)
         reg_w = (weights.get("region") or {}).get(item.get("region"), 0.8)
         reg_l = (weights.get("region_learned") or {}).get(item.get("region"), 1.0)
-        w = tier_w * cat_w * cat_l * reg_w * reg_l * recency * float(a.get("confidence", 0)) \
+        w = tier_w * cat_w * cat_l * reg_w * reg_l * recency \
+            * calibrated_confidence(a.get("confidence", 0), weights) \
             * float(a.get("novelty", 0.7)) * max(0.05, float(a.get("magnitude", 0))) \
             * (0.3 + 0.7 * float(a.get("relevance", 0.5)))
         if w <= 0:
@@ -156,6 +261,7 @@ def score_news(store: NewsStore, hours: int = 48, limit: int = 400) -> dict:
         enriched.append({**item, "weight": round(w, 5),
                          "signed": round(w * float(a.get("direction", 0)), 5)})
     enriched = _dedupe_events(enriched)
+    _cluster_decay(enriched, float(weights.get("cluster_decay", 0.5)))
 
     def bucket() -> dict:
         return {"score": 0.0, "weight": 0.0, "n": 0}
@@ -230,13 +336,40 @@ def symbol_news_score(impact: dict, symbol: str) -> dict:
 
 
 def combine(price_logret: float, horizon: int, news_score: float, impact: dict,
-            weights: dict | None = None) -> dict:
+            weights: dict | None = None, vol_scale: float | None = None,
+            regime: str | None = None) -> dict:
+    """价格先验 × 新闻分融合（线性意见池）。
+
+    尺度（link function）优先用 horizon 期已实现波动率 σ_h（由 predict_combined
+    传入），等价于"score=1 的强新闻 ≈ 1 个 horizon 标准差"；缺失时回退常数表
+    HORIZON_SCALE（本身近似 1.2%×√T 的粗版）。regime 乘子作用于新闻幅度：
+    低波动期价格信号弱、新闻相对信息价值高（>1）；高波动期新闻隐含幅度噪音
+    大（<1）。两个先验均可经 weights 覆盖（scale_vol_mult / regime_mult）。"""
     weights = weights or load_weights()
     coverage = min(1.0, float((impact.get("global") or {}).get("weight", 0)) / 3.0)
     base = float(weights.get("news_weight", 0.15))
     w = 0.0 if not impact.get("n") else max(0.05, min(0.35, base * (0.6 + 0.8 * coverage)))
-    scale = HORIZON_SCALE.get(int(horizon), 0.025)
-    news_logret = float(news_score) * scale * (0.6 + 0.4 * coverage)
+    try:
+        vs = float(vol_scale) if vol_scale else None
+    except (TypeError, ValueError):
+        vs = None
+    try:
+        k_mult = max(0.5, min(1.5, float(weights.get("scale_vol_mult", 1.0) or 1.0)))
+    except (TypeError, ValueError):
+        k_mult = 1.0
+    if vs and vs > 0 and math.isfinite(vs):
+        scale = max(0.006, min(0.08, vs * k_mult))
+        scale_source = "realized_vol"
+    else:
+        scale = HORIZON_SCALE.get(int(horizon), 0.025)
+        scale_source = "table"
+    reg_mult = 1.0
+    if regime:
+        try:
+            reg_mult = max(0.5, min(1.5, float((weights.get("regime_mult") or {}).get(str(regime), 1.0))))
+        except (TypeError, ValueError):
+            reg_mult = 1.0
+    news_logret = float(news_score) * scale * (0.6 + 0.4 * coverage) * reg_mult
     combined = (1.0 - w) * float(price_logret) + w * news_logret
     agreement = 0
     if abs(price_logret) > 1e-9 and abs(news_score) > 1e-9:
@@ -251,7 +384,10 @@ def combine(price_logret: float, horizon: int, news_score: float, impact: dict,
         "news_logret": round(news_logret, 6),
         "agreement": agreement,
         "confidence": round(confidence, 3),
-        "horizon_scale": scale,
+        "horizon_scale": round(scale, 6),
+        "scale_source": scale_source,
+        "regime": str(regime or "mid"),
+        "regime_mult": round(reg_mult, 3),
         "coverage": round(coverage, 3),
     }
 
@@ -264,10 +400,15 @@ def predict_combined(store: NewsStore, data_store, symbol: str, horizon: int = 5
     impact = score_news(store, hours=48)
     ns = symbol_news_score(impact, symbol)
     weights = load_weights()
-    comb = combine(float(price.get("point_logret", 0)), horizon, ns["score"], impact, weights)
+    vol_scale = _horizon_vol_scale(data_store, symbol, horizon)
+    regime = _vol_regime(data_store, symbol)
+    comb = combine(float(price.get("point_logret", 0)), horizon, ns["score"], impact, weights,
+                   vol_scale=vol_scale, regime=regime)
     notes = [
         "价格先验来自价量滚动回测；新闻层只使用官方一级源，权重被限制在 5%–35%。",
         "新闻层没有历史新闻库，无法做真正的历史回测；这里只做前向影子测试。",
+        "融合尺度优先用已实现波动率 σ_h 校准（强新闻≈1 个 horizon 标准差），常数表仅兜底。",
+        "波动率 regime 乘子：低波动期新闻乘子上调、高波动期下调——可配置先验，非最优估计。",
         "方向准确率 98.7% 在价量+新闻的样本外不可承诺；请把结果当情景，不是买卖信号。",
         "LLM 分析可能出错；所有事件卡都保留原文链接与来源层级，需人工复核。",
     ]

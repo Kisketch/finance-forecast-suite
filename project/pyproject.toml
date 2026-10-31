@@ -1,6 +1,6 @@
 [project]
 name = "fin-terminal"
-version = "0.1.0"
+version = "0.5.0"
 description = "Local multi-market financial analysis and forecasting desktop terminal"
 requires-python = ">=3.11"
 dependencies = [
